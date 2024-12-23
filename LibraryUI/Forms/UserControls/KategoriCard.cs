@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
 using LibraryEFCore.Models;
+using LibraryUI.Forms.SubForms.Category;
 
 namespace LibraryUI.Forms.UserControls
 {
@@ -22,6 +23,7 @@ namespace LibraryUI.Forms.UserControls
             _kategori = kategori;
             _listeYenile = listeYenile;
 
+            txtId.Text = _kategori.ID.ToString();
             txtKategoriAdi.Text = _kategori.KategoriAdi;
         }
 
@@ -73,6 +75,23 @@ namespace LibraryUI.Forms.UserControls
             {
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnDetay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDetay_Click_1(object sender, EventArgs e)
+        {
+            FrmCategoryDetails categoryDetails = new FrmCategoryDetails(_kategori);
+            categoryDetails.ShowDialog();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            FrmCategoryUpdate categoryUpdate = new FrmCategoryUpdate(_kategori,_listeYenile);
+            categoryUpdate.ShowDialog();
         }
     }
 }

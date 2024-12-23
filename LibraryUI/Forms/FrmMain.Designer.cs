@@ -35,8 +35,9 @@
             label3 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            btnMain = new Button();
             btnKitap = new Button();
-            button3 = new Button();
+            btnKategori = new Button();
             btnUye = new Button();
             button2 = new Button();
             pnlContainer = new Panel();
@@ -50,8 +51,9 @@
             flowLayoutPanel1.BackColor = Color.IndianRed;
             flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel1.Controls.Add(panel2);
+            flowLayoutPanel1.Controls.Add(btnMain);
             flowLayoutPanel1.Controls.Add(btnKitap);
-            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(btnKategori);
             flowLayoutPanel1.Controls.Add(btnUye);
             flowLayoutPanel1.Controls.Add(button2);
             flowLayoutPanel1.Dock = DockStyle.Left;
@@ -125,6 +127,22 @@
             pictureBox1.Size = new Size(74, 83);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // btnMain
+            // 
+            btnMain.BackColor = Color.Transparent;
+            btnMain.Dock = DockStyle.Bottom;
+            btnMain.FlatStyle = FlatStyle.System;
+            btnMain.Font = new Font("Segoe UI", 18F);
+            btnMain.ForeColor = Color.FloralWhite;
+            btnMain.Location = new Point(3, 92);
+            btnMain.Name = "btnMain";
+            btnMain.Size = new Size(215, 49);
+            btnMain.TabIndex = 13;
+            btnMain.Text = "Anasayfa";
+            btnMain.UseVisualStyleBackColor = false;
+            btnMain.Click += btnMain_Click;
             // 
             // btnKitap
             // 
@@ -133,28 +151,28 @@
             btnKitap.FlatStyle = FlatStyle.System;
             btnKitap.Font = new Font("Segoe UI", 18F);
             btnKitap.ForeColor = Color.FloralWhite;
-            btnKitap.Location = new Point(3, 92);
+            btnKitap.Location = new Point(3, 147);
             btnKitap.Name = "btnKitap";
             btnKitap.Size = new Size(215, 49);
-            btnKitap.TabIndex = 4;
+            btnKitap.TabIndex = 14;
             btnKitap.Text = "Kitap İşlemleri";
             btnKitap.UseVisualStyleBackColor = false;
             btnKitap.Click += btnKitap_Click;
             // 
-            // button3
+            // btnKategori
             // 
-            button3.BackColor = Color.Transparent;
-            button3.Dock = DockStyle.Bottom;
-            button3.FlatStyle = FlatStyle.System;
-            button3.Font = new Font("Segoe UI", 18F);
-            button3.ForeColor = Color.FloralWhite;
-            button3.Location = new Point(3, 147);
-            button3.Name = "button3";
-            button3.Size = new Size(215, 49);
-            button3.TabIndex = 9;
-            button3.Text = "Kategori İşlemleri";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            btnKategori.BackColor = Color.Transparent;
+            btnKategori.Dock = DockStyle.Bottom;
+            btnKategori.FlatStyle = FlatStyle.System;
+            btnKategori.Font = new Font("Segoe UI", 18F);
+            btnKategori.ForeColor = Color.FloralWhite;
+            btnKategori.Location = new Point(3, 202);
+            btnKategori.Name = "btnKategori";
+            btnKategori.Size = new Size(215, 49);
+            btnKategori.TabIndex = 15;
+            btnKategori.Text = "Kategori İşlemleri";
+            btnKategori.UseVisualStyleBackColor = false;
+            btnKategori.Click += btnKategori_Click;
             // 
             // btnUye
             // 
@@ -163,10 +181,10 @@
             btnUye.FlatStyle = FlatStyle.System;
             btnUye.Font = new Font("Segoe UI", 18F);
             btnUye.ForeColor = Color.FloralWhite;
-            btnUye.Location = new Point(3, 202);
+            btnUye.Location = new Point(3, 257);
             btnUye.Name = "btnUye";
             btnUye.Size = new Size(215, 49);
-            btnUye.TabIndex = 11;
+            btnUye.TabIndex = 16;
             btnUye.Text = "Üye İşlemleri";
             btnUye.UseVisualStyleBackColor = false;
             // 
@@ -177,10 +195,10 @@
             button2.FlatStyle = FlatStyle.System;
             button2.Font = new Font("Segoe UI", 16F);
             button2.ForeColor = Color.FloralWhite;
-            button2.Location = new Point(3, 257);
+            button2.Location = new Point(3, 312);
             button2.Name = "button2";
             button2.Size = new Size(215, 51);
-            button2.TabIndex = 12;
+            button2.TabIndex = 17;
             button2.Text = "Ödünç Alma İşlemleri";
             button2.UseVisualStyleBackColor = false;
             // 
@@ -203,8 +221,9 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMain";
-            Text = "FrmMain";
+            Text = "Kütüphane Uygulaması";
             WindowState = FormWindowState.Maximized;
+            Load += FrmMain_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -221,8 +240,9 @@
         private Panel pnlContainer;
         private Label label2;
         private Label label3;
+        private Button btnMain;
         private Button btnKitap;
-        private Button button3;
+        private Button btnKategori;
         private Button btnUye;
         private Button button2;
     }

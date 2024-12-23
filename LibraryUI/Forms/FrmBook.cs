@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
 using LibraryEFCore.Models;
@@ -46,36 +43,29 @@ namespace LibraryUI.Forms
         // Kitapları listele ve güncelle
         private void KitaplariListele()
         {
-            try
+            flowLayoutPanel2.Controls.Clear(); // Paneli temizle
+
+            var kitaplar = _context.Kitaplar.Include(k => k.Kategori).ToList();
+
+            if (kitaplar.Count == 0)
             {
-                flowLayoutPanel2.Controls.Clear(); // Paneli temizle
-
-                var kitaplar = _context.Kitaplar.Include(k => k.Kategori).ToList();
-
-                if (kitaplar.Count == 0)
-                {
-                    MessageBox.Show("Henüz kitap eklenmemiş!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                // FlowLayoutPanel genişlik ayarını hesapla
-
-                foreach (var kitap in kitaplar)
-                {
-                    // Kitap kartını oluştur
-                    var kitapCard = new KitapCard(kitap, KitaplariListele)
-                    {
-                        Width = flowLayoutPanel2.Width, // Genişlik
-                        Height = 80 // Sabit yükseklik
-                    };
-
-                    // Panele ekle
-                    flowLayoutPanel2.Controls.Add(kitapCard);
-                }
+                MessageBox.Show("Henüz kitap eklenmemiş!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            catch (Exception ex)
+
+            // FlowLayoutPanel genişlik ayarını hesapla
+
+            foreach (var kitap in kitaplar)
             {
-                MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Kitap kartını oluştur
+                var kitapCard = new KitapCard(kitap, _context, KitaplariListele)
+                {
+                    Width = flowLayoutPanel2.Width, // Genişlik
+                    Height = 80 // Sabit yükseklik
+                };
+
+                // Panele ekle
+                flowLayoutPanel2.Controls.Add(kitapCard);
             }
         }
 
@@ -87,18 +77,19 @@ namespace LibraryUI.Forms
 
         private void btnNewKitap_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnNewKitap_Click_1(object sender, EventArgs e)
-        {
             FrmBookAdd bookAdd = new FrmBookAdd();
             bookAdd.ShowDialog();
+            KitaplariListele(); // Yeni kitap eklendiğinde listeyi yenile
         }
 
-        private void btnYenile_Click_1(object sender, EventArgs e)
+        private void btnUpdateKitap_Click(object sender, EventArgs e)
         {
-            KitaplariListele();
+            if (flowLayoutPanel2.Controls.Count > 0 && flowLayoutPanel2.Controls[0] is KitapCard kitapCard)
+            {
+                var kitap = kitapCard._kitap;
+                FrmBookUpdate bookUpdate = new FrmBookUpdate(kitap,_context, KitaplariListele);
+                bookUpdate.ShowDialog();
+            }
         }
 
         private void flowLayoutPanelKitaplar_Paint(object sender, PaintEventArgs e)

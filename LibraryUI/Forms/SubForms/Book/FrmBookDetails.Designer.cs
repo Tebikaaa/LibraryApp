@@ -363,7 +363,7 @@
             MinimizeBox = false;
             Name = "FrmBookDetails";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmBookDetails";
+            Text = "Kitap Detay Formu";
             flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

@@ -128,7 +128,7 @@
             flowLayoutPanel2.Controls.Add(txtId);
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(138, 71);
+            flowLayoutPanel2.Size = new Size(114, 71);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // lblId
@@ -156,9 +156,9 @@
             // 
             flowLayoutPanel3.Controls.Add(lblKitapAdi);
             flowLayoutPanel3.Controls.Add(txtKitapAdi);
-            flowLayoutPanel3.Location = new Point(147, 3);
+            flowLayoutPanel3.Location = new Point(123, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(136, 71);
+            flowLayoutPanel3.Size = new Size(148, 71);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // lblKitapAdi
@@ -180,7 +180,7 @@
             txtKitapAdi.Location = new Point(3, 33);
             txtKitapAdi.Name = "txtKitapAdi";
             txtKitapAdi.ReadOnly = true;
-            txtKitapAdi.Size = new Size(119, 29);
+            txtKitapAdi.Size = new Size(145, 29);
             txtKitapAdi.TabIndex = 14;
             txtKitapAdi.Text = "Kitap";
             // 
@@ -188,9 +188,9 @@
             // 
             flowLayoutPanel4.Controls.Add(lblStok);
             flowLayoutPanel4.Controls.Add(txtStokAdedi);
-            flowLayoutPanel4.Location = new Point(289, 3);
+            flowLayoutPanel4.Location = new Point(277, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(153, 74);
+            flowLayoutPanel4.Size = new Size(129, 74);
             flowLayoutPanel4.TabIndex = 2;
             // 
             // lblStok
@@ -210,7 +210,7 @@
             txtStokAdedi.Location = new Point(3, 33);
             txtStokAdedi.Name = "txtStokAdedi";
             txtStokAdedi.ReadOnly = true;
-            txtStokAdedi.Size = new Size(114, 29);
+            txtStokAdedi.Size = new Size(126, 29);
             txtStokAdedi.TabIndex = 20;
             txtStokAdedi.Text = "5";
             // 
@@ -218,9 +218,9 @@
             // 
             flowLayoutPanel5.Controls.Add(lblYazar);
             flowLayoutPanel5.Controls.Add(txtYazar);
-            flowLayoutPanel5.Location = new Point(448, 3);
+            flowLayoutPanel5.Location = new Point(412, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(138, 74);
+            flowLayoutPanel5.Size = new Size(197, 74);
             flowLayoutPanel5.TabIndex = 3;
             // 
             // lblYazar
@@ -240,7 +240,7 @@
             txtYazar.Location = new Point(3, 33);
             txtYazar.Name = "txtYazar";
             txtYazar.ReadOnly = true;
-            txtYazar.Size = new Size(115, 29);
+            txtYazar.Size = new Size(194, 29);
             txtYazar.TabIndex = 15;
             txtYazar.Text = "Kerem";
             // 
@@ -248,9 +248,9 @@
             // 
             flowLayoutPanel6.Controls.Add(lblKategori);
             flowLayoutPanel6.Controls.Add(txtKategori);
-            flowLayoutPanel6.Location = new Point(592, 3);
+            flowLayoutPanel6.Location = new Point(615, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new Size(163, 74);
+            flowLayoutPanel6.Size = new Size(161, 74);
             flowLayoutPanel6.TabIndex = 4;
             // 
             // lblKategori
@@ -270,7 +270,7 @@
             txtKategori.Location = new Point(3, 33);
             txtKategori.Name = "txtKategori";
             txtKategori.ReadOnly = true;
-            txtKategori.Size = new Size(115, 29);
+            txtKategori.Size = new Size(158, 29);
             txtKategori.TabIndex = 16;
             txtKategori.Text = "Roman";
             // 
@@ -278,9 +278,9 @@
             // 
             flowLayoutPanel7.Controls.Add(lblYayinYili);
             flowLayoutPanel7.Controls.Add(txtYayinYili);
-            flowLayoutPanel7.Location = new Point(761, 3);
+            flowLayoutPanel7.Location = new Point(782, 3);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new Size(137, 71);
+            flowLayoutPanel7.Size = new Size(106, 71);
             flowLayoutPanel7.TabIndex = 5;
             // 
             // lblYayinYili
@@ -300,7 +300,7 @@
             txtYayinYili.Location = new Point(3, 33);
             txtYayinYili.Name = "txtYayinYili";
             txtYayinYili.ReadOnly = true;
-            txtYayinYili.Size = new Size(111, 29);
+            txtYayinYili.Size = new Size(103, 29);
             txtYayinYili.TabIndex = 16;
             txtYayinYili.Text = "2001";
             // 

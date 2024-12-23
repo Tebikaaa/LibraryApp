@@ -41,10 +41,27 @@ namespace LibraryUI.Forms
             FormYukle(book);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnKategori_Click(object sender, EventArgs e)
         {
             FrmCategory category = new FrmCategory();
             FormYukle(category);
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FrmMainPage mainPage = new FrmMainPage();
+            FormYukle(mainPage);
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            FrmMainPage mainPage = new FrmMainPage();
+            FormYukle(mainPage);
         }
     }
 }

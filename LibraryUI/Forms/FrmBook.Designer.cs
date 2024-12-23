@@ -72,7 +72,7 @@
             btnYenile.Size = new Size(42, 58);
             btnYenile.TabIndex = 3;
             btnYenile.UseVisualStyleBackColor = true;
-            btnYenile.Click += btnYenile_Click_1;
+            btnYenile.Click += btnYenile_Click;
             // 
             // btnNewKitap
             // 
@@ -86,7 +86,7 @@
             btnNewKitap.Size = new Size(43, 58);
             btnNewKitap.TabIndex = 4;
             btnNewKitap.UseVisualStyleBackColor = true;
-            btnNewKitap.Click += btnNewKitap_Click_1;
+            btnNewKitap.Click += btnNewKitap_Click;
             // 
             // label1
             // 

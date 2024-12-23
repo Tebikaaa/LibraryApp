@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCategoryAdd));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
             txtKategoriAdi = new TextBox();
@@ -91,10 +92,11 @@
             ClientSize = new Size(338, 119);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCategoryAdd";
-            Text = "FrmCategoryAdd";
+            Text = "Kategori Ekleme Formu";
             flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

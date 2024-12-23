@@ -7,16 +7,28 @@ namespace LibraryUI.Forms.UserControls
 {
     public partial class KitapCard : UserControl
     {
-        private Kitap _kitap;
+        public Kitap _kitap { get; private set; }
+        public LibraryContext _context { get; private set; }
         private readonly Action RefreshAction;
+        private readonly Action ReBuildCardAction;
 
         // Yapıcı metod: Kitap verisini alır
+        public KitapCard(Kitap kitap,LibraryContext context, Action refreshAction)
+        {
+            InitializeComponent();
+            _kitap = kitap;
+            _context = context;
+            RefreshAction = refreshAction; // Listeyi yenileme işlemi
+            KitapBilgileriniYukle();
+            ReBuildCardAction = KitapBilgileriniYukle;
+        }
         public KitapCard(Kitap kitap, Action refreshAction)
         {
             InitializeComponent();
             _kitap = kitap;
             RefreshAction = refreshAction; // Listeyi yenileme işlemi
             KitapBilgileriniYukle();
+            ReBuildCardAction = KitapBilgileriniYukle;
         }
 
         // Kitap bilgilerini yükle
@@ -66,9 +78,10 @@ namespace LibraryUI.Forms.UserControls
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            FrmBookUpdate updateForm = new FrmBookUpdate(_kitap); // Güncelleme formuna kitabı gönder
+            FrmBookUpdate updateForm = new FrmBookUpdate(_kitap,_context,RefreshAction); // Güncelleme formuna kitabı gönder
             updateForm.ShowDialog(); // Modal olarak aç
             RefreshAction.Invoke();
+            ReBuildCardAction.Invoke();
         }
 
         private void btnDetay_Click(object sender, EventArgs e)

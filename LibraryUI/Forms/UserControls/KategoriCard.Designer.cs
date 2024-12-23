@@ -37,6 +37,7 @@
             btnUpdate = new Button();
             btnSil = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            btnDetay = new Button();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -120,6 +121,7 @@
             btnUpdate.TabIndex = 12;
             btnUpdate.TextAlign = ContentAlignment.MiddleRight;
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnSil
             // 
@@ -148,10 +150,27 @@
             flowLayoutPanel1.Size = new Size(811, 82);
             flowLayoutPanel1.TabIndex = 13;
             // 
+            // btnDetay
+            // 
+            btnDetay.BackColor = Color.DodgerBlue;
+            btnDetay.BackgroundImage = Properties.Resources.details;
+            btnDetay.BackgroundImageLayout = ImageLayout.Zoom;
+            btnDetay.Dock = DockStyle.Right;
+            btnDetay.FlatStyle = FlatStyle.Popup;
+            btnDetay.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDetay.Location = new Point(621, 0);
+            btnDetay.Name = "btnDetay";
+            btnDetay.Size = new Size(65, 82);
+            btnDetay.TabIndex = 14;
+            btnDetay.TextAlign = ContentAlignment.MiddleRight;
+            btnDetay.UseVisualStyleBackColor = false;
+            btnDetay.Click += btnDetay_Click_1;
+            // 
             // KategoriCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDetay);
             Controls.Add(btnUpdate);
             Controls.Add(btnSil);
             Controls.Add(flowLayoutPanel1);
@@ -176,5 +195,6 @@
         private Button btnUpdate;
         private Button btnSil;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnDetay;
     }
 }
