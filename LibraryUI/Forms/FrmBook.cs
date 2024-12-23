@@ -1,14 +1,16 @@
-﻿using System;
+﻿using LibraryEFCore.Context;
+using LibraryEFCore.Models;
+using LibraryUI.Forms.SubForms.Book;
+using LibraryUI.Forms.UserControls;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using LibraryEFCore.Context;
-using LibraryEFCore.Models;
-using LibraryUI.Forms.SubForms.Book;
-using LibraryUI.Forms.UserControls;
-using Microsoft.EntityFrameworkCore;
+using LibraryEFCore.Basiss;
+using LibraryUI.Basiss;
 
 namespace LibraryUI.Forms
 {
@@ -22,6 +24,7 @@ namespace LibraryUI.Forms
             InitializeComponent();
             _context = new LibraryContext();
             this.Resize += FrmBook_Resize;
+            BilgileriHazirla(); // Filtre bilgilerini hazırla
         }
 
         private void FrmBook_Resize(object sender, EventArgs e)
@@ -29,72 +32,160 @@ namespace LibraryUI.Forms
             if (!isResizing)
             {
                 isResizing = true;
-                KitaplariListele();
+                Filtrele();
                 isResizing = false;
             }
         }
 
-        // Form yüklendiğinde kitapları listele
-        private void FrmBook_Load(object sender, EventArgs e)
+        private void BilgileriHazirla()
         {
-            KitaplariListele();
+            try
+            {
+                // Kategorileri yükle
+                cmbKategori.DisplayMember = "KategoriAdi";
+                cmbKategori.ValueMember = "ID";
+                cmbKategori.DataSource = _context.Kategoriler.ToList();
+                cmbKategori.SelectedIndex = -1;
+
+                // Durumları yükle (Enum)
+                cmbDurum.DataSource = Enum.GetValues(typeof(KitapDurumu));
+                cmbDurum.SelectedIndex = -1;
+
+                // Stok seçeneklerini yükle
+                cmbStok.Items.AddRange(new string[] { "Artan", "Azalan" });
+                cmbStok.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Bilgileri yüklerken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Kitapları listele ve güncelle
-        private void KitaplariListele()
+        private void Filtrele()
         {
-            flowLayoutPanel2.Controls.Clear(); // Paneli temizle
-
-            var kitaplar = _context.Kitaplar.Include(k => k.Kategori).ToList();
-
-            if (kitaplar.Count == 0)
+            try
             {
-                MessageBox.Show("Henüz kitap eklenmemiş!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                flowLayoutPanel2.Controls.Clear();
 
-            // FlowLayoutPanel genişlik ayarını hesapla
+                // Filtreleme parametrelerini al
+                int? kategoriID = cmbKategori.SelectedValue as int?;
+                var durum = cmbDurum.SelectedItem as KitapDurumu?;
+                bool stokArtan = cmbStok.SelectedItem?.ToString() == "Artan";
+                bool adaGoreAZ = rdbAZ.Checked;
+                string aramaMetni = txtSearch.Text.Trim().ToLower();
 
-            foreach (var kitap in kitaplar)
-            {
-                // Kitap kartını oluştur
-                var kitapCard = new KitapCard(kitap, _context, KitaplariListele)
+                // Kitapları yükle
+                var kitaplar = _context.Kitaplar.Include(k => k.Kategori).AsQueryable();
+
+                // Kategoriye göre filtre
+                if (kategoriID.HasValue)
                 {
-                    Width = flowLayoutPanel2.Width, // Genişlik
-                    Height = 80 // Sabit yükseklik
-                };
+                    kitaplar = kitaplar.Where(k => k.KategoriID == kategoriID.Value);
+                }
 
-                // Panele ekle
-                flowLayoutPanel2.Controls.Add(kitapCard);
+                // Duruma göre filtre
+                if (durum.HasValue)
+                {
+                    kitaplar = kitaplar.Where(k => k.Durum == durum.Value);
+                }
+
+                // Arama metnine göre filtreleme
+                if (!string.IsNullOrWhiteSpace(aramaMetni))
+                {
+                    kitaplar = kitaplar.Where(k => k.KitapAdi.ToLower().Contains(aramaMetni) ||
+                                                   k.Yazar.ToLower().Contains(aramaMetni));
+                }
+
+                // Stoka göre sıralama
+                // Stoka göre sıralama
+                var siraliKitaplar = stokArtan
+                    ? kitaplar.OrderBy(k => k.StokAdedi)
+                    : kitaplar.OrderByDescending(k => k.StokAdedi);
+
+                // Ada göre sıralama
+                siraliKitaplar = adaGoreAZ
+                    ? siraliKitaplar.ThenBy(k => k.KitapAdi)
+                    : siraliKitaplar.ThenByDescending(k => k.KitapAdi);
+
+                // Sonuçları yükle
+                var kitapList = siraliKitaplar.ToList();
+
+                if (!kitapList.Any())
+                {
+                    lblSonuc.Text = "Sonuç bulunamadı!";
+                    lblSonuc.Visible = true;
+                }
+                else
+                {
+                    lblSonuc.Visible = false;
+
+                    foreach (var kitap in kitapList)
+                    {
+                        var kitapCard = new KitapCard(kitap, _context, Filtrele)
+                        {
+                            Width = (int)(flowLayoutPanel2.Width * 0.98),
+                            Height = 80
+                        };
+                        flowLayoutPanel2.Controls.Add(kitapCard);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Kitaplar yenilendiğinde tekrar yükle
-        private void btnYenile_Click(object sender, EventArgs e)
+        private void cmbKategori_SelectedIndexChanged(object sender, EventArgs e)
         {
-            KitaplariListele();
+            Filtrele();
+        }
+
+        private void cmbDurum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Filtrele();
+        }
+
+        private void cmbStok_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Filtrele();
+        }
+
+        private void rdbAZ_CheckedChanged(object sender, EventArgs e)
+        {
+            Filtrele();
+        }
+
+        private void rdbZA_CheckedChanged(object sender, EventArgs e)
+        {
+            Filtrele();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            Filtrele();
         }
 
         private void btnNewKitap_Click(object sender, EventArgs e)
         {
-            FrmBookAdd bookAdd = new FrmBookAdd();
+            FrmBookAdd bookAdd = new FrmBookAdd(_context);
             bookAdd.ShowDialog();
-            KitaplariListele(); // Yeni kitap eklendiğinde listeyi yenile
+            Filtrele();
         }
 
-        private void btnUpdateKitap_Click(object sender, EventArgs e)
+        private void btnYenile_Click(object sender, EventArgs e)
         {
-            if (flowLayoutPanel2.Controls.Count > 0 && flowLayoutPanel2.Controls[0] is KitapCard kitapCard)
-            {
-                var kitap = kitapCard._kitap;
-                FrmBookUpdate bookUpdate = new FrmBookUpdate(kitap,_context, KitaplariListele);
-                bookUpdate.ShowDialog();
-            }
+            Filtrele();
         }
 
-        private void flowLayoutPanelKitaplar_Paint(object sender, PaintEventArgs e)
+        private void btnClearFilter_Click(object sender, EventArgs e)
         {
-
+            cmbKategori.SelectedIndex = -1;
+            cmbDurum.SelectedIndex = -1;
+            cmbStok.SelectedIndex = -1;
+            rdbAZ.Checked = true;
+            txtSearch.Clear();
+            Filtrele();
         }
     }
 }

@@ -47,7 +47,6 @@
             // 
             flowLayoutPanel2.Controls.Add(lblId);
             flowLayoutPanel2.Controls.Add(txtId);
-            flowLayoutPanel2.Dock = DockStyle.Top;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(115, 71);
@@ -78,10 +77,9 @@
             // 
             flowLayoutPanel3.Controls.Add(lblKitapAdi);
             flowLayoutPanel3.Controls.Add(txtKategoriAdi);
-            flowLayoutPanel3.Dock = DockStyle.Top;
             flowLayoutPanel3.Location = new Point(124, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(126, 71);
+            flowLayoutPanel3.Size = new Size(215, 71);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // lblKitapAdi
@@ -103,7 +101,7 @@
             txtKategoriAdi.Location = new Point(3, 33);
             txtKategoriAdi.Name = "txtKategoriAdi";
             txtKategoriAdi.ReadOnly = true;
-            txtKategoriAdi.Size = new Size(119, 29);
+            txtKategoriAdi.Size = new Size(204, 29);
             txtKategoriAdi.TabIndex = 14;
             txtKategoriAdi.Text = "Kitap";
             // 

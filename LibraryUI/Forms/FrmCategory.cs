@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LibraryEFCore.Context;
 using LibraryUI.Forms.SubForms.Category;
 using LibraryUI.Forms.UserControls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryUI.Forms
 {
@@ -21,12 +22,14 @@ namespace LibraryUI.Forms
         {
             InitializeComponent();
             _context = new LibraryContext();
-            this.Resize += FrmBook_Resize;// Veritabanı bağlantısı
+            this.Resize += FrmBook_Resize; // Veritabanı bağlantısı
         }
+
         private void FrmBook_Resize(object sender, EventArgs e)
         {
             KategorileriListele();
         }
+
         // Form yüklendiğinde kategorileri listele
         private void FrmCategory_Load(object sender, EventArgs e)
         {
@@ -34,28 +37,34 @@ namespace LibraryUI.Forms
         }
 
         // 1. Kategorileri Listele
-        private void KategorileriListele()
+        private void KategorileriListele(string filter = "")
         {
             try
             {
                 flowLayoutPanel2.Controls.Clear(); // Paneli temizle
 
-                var kategoriler = _context.Kategoriler.ToList();
+                var lowerFilter = filter.Trim().ToLower();
+                var kategoriler = string.IsNullOrWhiteSpace(filter) ?
+                    _context.Kategoriler.ToList() :
+                    _context.Kategoriler.Where(k => k.KategoriAdi.ToLower().Contains(lowerFilter)).ToList();
 
                 if (kategoriler.Count == 0)
                 {
-                    MessageBox.Show("Henüz kategori eklenmemiş!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    lblSonuc.Text = "Sonuç bulunamadı!";
+                    lblSonuc.Visible = true;
+                }
+                else
+                {
+                    lblSonuc.Visible = false;
                 }
 
                 // FlowLayoutPanel genişlik ayarını hesapla
-
                 foreach (var kategori in kategoriler)
                 {
                     // Kategori kartını oluştur
-                    var kategoriCard = new KategoriCard(kategori, KategorileriListele)
+                    var kategoriCard = new KategoriCard(kategori, () => KategorileriListele(filter))
                     {
-                        Width = flowLayoutPanel2.Width, // Genişlik
+                        Width = (int)(flowLayoutPanel2.Width * 0.98), // Genişlik
                         Height = 80 // Sabit yükseklik
                     };
 
@@ -68,20 +77,27 @@ namespace LibraryUI.Forms
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
+        // Arama işlemi
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            KategorileriListele(txtSearch.Text);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            FrmCategoryAdd categoryAdd = new FrmCategoryAdd(KategorileriListele);
+            FrmCategoryAdd categoryAdd = new FrmCategoryAdd(() => KategorileriListele(txtSearch.Text));
             categoryAdd.ShowDialog();
         }
 
         private void btnYenile_Click(object sender, EventArgs e)
         {
-            KategorileriListele();
+            KategorileriListele(txtSearch.Text);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

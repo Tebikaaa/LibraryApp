@@ -47,7 +47,6 @@
             lblYayinYili = new Label();
             panel6 = new Panel();
             label10 = new Label();
-            lblSeriNo = new Label();
             panel7 = new Panel();
             label12 = new Label();
             lblKategori = new Label();
@@ -57,6 +56,7 @@
             panel9 = new Panel();
             label3 = new Label();
             lblStokAdedi = new Label();
+            cmbSeriNolar = new ComboBox();
             flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -233,8 +233,8 @@
             // 
             // panel6
             // 
+            panel6.Controls.Add(cmbSeriNolar);
             panel6.Controls.Add(label10);
-            panel6.Controls.Add(lblSeriNo);
             panel6.Location = new Point(3, 248);
             panel6.Name = "panel6";
             panel6.Size = new Size(377, 43);
@@ -249,16 +249,6 @@
             label10.Size = new Size(174, 32);
             label10.TabIndex = 2;
             label10.Text = "Seri Numarası :";
-            // 
-            // lblSeriNo
-            // 
-            lblSeriNo.AutoSize = true;
-            lblSeriNo.Font = new Font("Segoe UI", 16F);
-            lblSeriNo.Location = new Point(183, 6);
-            lblSeriNo.Name = "lblSeriNo";
-            lblSeriNo.Size = new Size(125, 30);
-            lblSeriNo.TabIndex = 3;
-            lblSeriNo.Text = "SN0020001";
             // 
             // panel7
             // 
@@ -350,6 +340,15 @@
             lblStokAdedi.TabIndex = 3;
             lblStokAdedi.Text = "1";
             // 
+            // cmbSeriNolar
+            // 
+            cmbSeriNolar.Font = new Font("Segoe UI", 12F);
+            cmbSeriNolar.FormattingEnabled = true;
+            cmbSeriNolar.Location = new Point(172, 7);
+            cmbSeriNolar.Name = "cmbSeriNolar";
+            cmbSeriNolar.Size = new Size(193, 29);
+            cmbSeriNolar.TabIndex = 3;
+            // 
             // FrmBookDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -406,7 +405,6 @@
         private Label lblYayinYili;
         private Panel panel6;
         private Label label10;
-        private Label lblSeriNo;
         private Panel panel7;
         private Label label12;
         private Label lblKategori;
@@ -416,5 +414,6 @@
         private Panel panel9;
         private Label label3;
         private Label lblStokAdedi;
+        private ComboBox cmbSeriNolar;
     }
 }

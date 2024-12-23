@@ -130,6 +130,7 @@
             Controls.Add(flowLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmCategoryUpdate";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Kategori Güncelleme Formu";
             Load += FrmCategoryUpdate_Load;
             flowLayoutPanel1.ResumeLayout(false);

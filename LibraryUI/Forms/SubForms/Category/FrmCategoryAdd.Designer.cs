@@ -96,6 +96,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCategoryAdd";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Kategori Ekleme Formu";
             flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

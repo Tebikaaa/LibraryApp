@@ -45,7 +45,7 @@ namespace LibraryUI.Forms.UserControls
         // Detaylar butonuna tıklanınca form aç
         private void btnDetaylar_Click(object sender, EventArgs e)
         {
-            FrmBookDetails detayForm = new FrmBookDetails(_kitap); // Detayları aç
+            FrmBookDetails detayForm = new FrmBookDetails(_kitap,_context); // Detayları aç
             detayForm.ShowDialog();
         }
 
@@ -86,7 +86,7 @@ namespace LibraryUI.Forms.UserControls
 
         private void btnDetay_Click(object sender, EventArgs e)
         {
-            FrmBookDetails bookDetails = new FrmBookDetails(_kitap);
+            FrmBookDetails bookDetails = new FrmBookDetails(_kitap,_context);
             bookDetails.ShowDialog();
         }
     }

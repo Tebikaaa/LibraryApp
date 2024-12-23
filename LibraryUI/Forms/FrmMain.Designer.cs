@@ -59,7 +59,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(221, 450);
+            flowLayoutPanel1.Size = new Size(221, 680);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -208,14 +208,14 @@
             pnlContainer.Dock = DockStyle.Fill;
             pnlContainer.Location = new Point(221, 0);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(579, 450);
+            pnlContainer.Size = new Size(1054, 680);
             pnlContainer.TabIndex = 1;
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1275, 680);
             Controls.Add(pnlContainer);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;

@@ -17,7 +17,7 @@ namespace LibraryUI.Forms.SubForms.Book
         private readonly Kitap _kitap;
         private readonly Action _onUpdate;
 
-        public FrmBookUpdate(Kitap kitap,LibraryContext context, Action onUpdate)
+        public FrmBookUpdate(Kitap kitap, LibraryContext context, Action onUpdate)
         {
             InitializeComponent();
             _context = context;
@@ -33,44 +33,84 @@ namespace LibraryUI.Forms.SubForms.Book
             txtYazar.Text = _kitap.Yazar;
             txtISBN.Text = _kitap.ISBN;
             txtYayinYili.Text = _kitap.YayınYılı?.ToString();
-            txtSeriNo.Text = _kitap.SeriNo;
             nudStokAdedi.Value = _kitap.StokAdedi;
 
+            // Kategori Listesi Yükle
             var kategoriler = _context.Kategoriler.ToList();
             cmbKategori.DataSource = kategoriler;
             cmbKategori.DisplayMember = "KategoriAdi";
             cmbKategori.ValueMember = "ID";
             cmbKategori.SelectedValue = _kitap.KategoriID;
 
+            // Durum Listesi Yükle
             cmbDurum.DataSource = Enum.GetValues(typeof(KitapDurumu));
             cmbDurum.SelectedItem = _kitap.Durum;
+
+            // Seri Numaralarını Yükle
+            var seriNolar = _context.SeriNolar
+                .Where(s => s.KitapID == _kitap.ID)
+                .Select(s => s.SeriNoKodu)
+                .ToList();
+
+            cmbSeriNolar.DataSource = seriNolar; // ListBox veya benzeri bir kontrol eklemelisiniz.
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             try
             {
-                var kitap = _context.Kitaplar.Find(_kitap.ID);
+                // Güncellenecek kitabı veritabanından çek
+                var kitap = _context.Kitaplar.Include(k => k.SeriNolar).FirstOrDefault(k => k.ID == _kitap.ID);
 
                 if (kitap != null)
                 {
+                    // Kitap Bilgilerini Güncelle
                     kitap.KitapAdi = txtKitapAdi.Text;
                     kitap.Yazar = txtYazar.Text;
                     kitap.ISBN = txtISBN.Text;
                     kitap.YayınYılı = int.TryParse(txtYayinYili.Text, out int yil) ? yil : (int?)null;
-
-                    if (string.IsNullOrEmpty(kitap.SeriNo) || kitap.KategoriID != (int)cmbKategori.SelectedValue)
+                    if(cmbKategori.SelectedValue != null)
                     {
-                        kitap.SeriNo = $"SN{cmbKategori.SelectedValue:D3}-{kitap.ID:D3}";
+                        kitap.KategoriID = (int)cmbKategori.SelectedValue;
                     }
-
-                    kitap.KategoriID = (int)cmbKategori.SelectedValue;
+                    else
+                    {
+                        MessageBox.Show("Kategori Bulunamadı Seçilmemiş olabilir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     kitap.StokAdedi = (int)nudStokAdedi.Value;
                     kitap.Durum = (KitapDurumu)cmbDurum.SelectedItem;
 
+                    // --- Seri No Güncelleme İşlemleri ---
+                    int mevcutStok = kitap.SeriNolar.Count;
+
+                    // Eğer stok artırılırsa yeni seri numaraları ekle
+                    if (mevcutStok < kitap.StokAdedi)
+                    {
+                        for (int i = mevcutStok; i < kitap.StokAdedi; i++)
+                        {
+                            kitap.SeriNolar.Add(new SeriNo
+                            {
+                                KitapID = kitap.ID,
+                                SeriNoKodu = $"SN-{kitap.ID:D3}-{i + 1:D3}" // Seri no formatı
+                            });
+                        }
+                    }
+                    // Eğer stok azaltılırsa fazla seri numaralarını sil
+                    else if (mevcutStok > kitap.StokAdedi)
+                    {
+                        var silinecekSeriNolar = kitap.SeriNolar
+                            .OrderByDescending(s => s.ID) // En son eklenenleri sil
+                            .Take(mevcutStok - kitap.StokAdedi)
+                            .ToList();
+
+                        _context.SeriNolar.RemoveRange(silinecekSeriNolar);
+                    }
+
+                    // Veritabanına güncelleme işlemini uygula
                     _context.Kitaplar.Update(kitap);
                     _context.SaveChanges();
 
+                    // Başarı mesajı ve kapanış
                     MessageBox.Show("Kitap başarıyla güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _onUpdate?.Invoke();
                     this.Close();
@@ -85,6 +125,7 @@ namespace LibraryUI.Forms.SubForms.Book
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void cmbKategori_DropDown(object sender, EventArgs e)
         {

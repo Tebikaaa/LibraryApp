@@ -36,7 +36,6 @@
             label7 = new Label();
             panel7 = new Panel();
             nudStokAdedi = new NumericUpDown();
-            cmbKategori = new ComboBox();
             label6 = new Label();
             panel6 = new Panel();
             txtISBN = new TextBox();
@@ -52,6 +51,7 @@
             panel2 = new Panel();
             panel4 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            cmbKategori = new ComboBox();
             panel9.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudStokAdedi).BeginInit();
@@ -131,15 +131,6 @@
             nudStokAdedi.Size = new Size(314, 29);
             nudStokAdedi.TabIndex = 1;
             nudStokAdedi.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // cmbKategori
-            // 
-            cmbKategori.Font = new Font("Segoe UI", 13F);
-            cmbKategori.FormattingEnabled = true;
-            cmbKategori.Location = new Point(119, 5);
-            cmbKategori.Name = "cmbKategori";
-            cmbKategori.Size = new Size(314, 31);
-            cmbKategori.TabIndex = 1;
             // 
             // label6
             // 
@@ -284,6 +275,15 @@
             flowLayoutPanel1.Size = new Size(453, 389);
             flowLayoutPanel1.TabIndex = 1;
             // 
+            // cmbKategori
+            // 
+            cmbKategori.Font = new Font("Segoe UI", 13F);
+            cmbKategori.FormattingEnabled = true;
+            cmbKategori.Location = new Point(119, 6);
+            cmbKategori.Name = "cmbKategori";
+            cmbKategori.Size = new Size(314, 31);
+            cmbKategori.TabIndex = 2;
+            // 
             // FrmBookAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -295,6 +295,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmBookAdd";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Kitap Ekleme Formu";
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
@@ -323,7 +324,6 @@
         private Label label9;
         private Label label7;
         private Panel panel7;
-        private ComboBox cmbKategori;
         private Label label6;
         private Panel panel6;
         private TextBox txtISBN;
@@ -340,5 +340,6 @@
         private Panel panel4;
         private FlowLayoutPanel flowLayoutPanel1;
         private NumericUpDown nudStokAdedi;
+        private ComboBox cmbKategori;
     }
 }

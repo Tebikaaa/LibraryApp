@@ -46,7 +46,6 @@
             txtISBN = new TextBox();
             label4 = new Label();
             panel5 = new Panel();
-            txtSeriNo = new TextBox();
             label5 = new Label();
             panel6 = new Panel();
             cmbKategori = new ComboBox();
@@ -58,6 +57,7 @@
             cmbDurum = new ComboBox();
             label9 = new Label();
             btnGuncelle = new Button();
+            cmbSeriNolar = new ComboBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -227,21 +227,12 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(txtSeriNo);
+            panel5.Controls.Add(cmbSeriNolar);
             panel5.Controls.Add(label5);
             panel5.Location = new Point(3, 230);
             panel5.Name = "panel5";
             panel5.Size = new Size(445, 39);
             panel5.TabIndex = 2;
-            // 
-            // txtSeriNo
-            // 
-            txtSeriNo.Font = new Font("Segoe UI", 14F);
-            txtSeriNo.Location = new Point(141, 4);
-            txtSeriNo.Name = "txtSeriNo";
-            txtSeriNo.ReadOnly = true;
-            txtSeriNo.Size = new Size(292, 32);
-            txtSeriNo.TabIndex = 1;
             // 
             // label5
             // 
@@ -351,6 +342,15 @@
             btnGuncelle.UseVisualStyleBackColor = true;
             btnGuncelle.Click += btnGuncelle_Click;
             // 
+            // cmbSeriNolar
+            // 
+            cmbSeriNolar.Font = new Font("Segoe UI", 12F);
+            cmbSeriNolar.FormattingEnabled = true;
+            cmbSeriNolar.Location = new Point(141, 7);
+            cmbSeriNolar.Name = "cmbSeriNolar";
+            cmbSeriNolar.Size = new Size(292, 29);
+            cmbSeriNolar.TabIndex = 1;
+            // 
             // FrmBookUpdate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -403,7 +403,6 @@
         private TextBox txtISBN;
         private Label label4;
         private Panel panel5;
-        private TextBox txtSeriNo;
         private Label label5;
         private Panel panel6;
         private TextBox textBox6;
@@ -419,5 +418,6 @@
         private ComboBox cmbDurum;
         private Label label9;
         private NumericUpDown nudStokAdedi;
+        private ComboBox cmbSeriNolar;
     }
 }
