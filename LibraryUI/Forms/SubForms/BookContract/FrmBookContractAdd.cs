@@ -142,10 +142,7 @@ namespace LibraryUI.Forms.SubForms.BookContract
                 }
 
                 int kalanGun = (dtpGeriAlinacakTarih.Value - dtpAlindigiTarih.Value).Days;
-                string oduncTipi = (kalanGun <= 7) ? OduncTipi.Günlük.ToString() :
-                                   (kalanGun > 7 && kalanGun <= 30) ? OduncTipi.Haftalık.ToString() :
-                                   (kalanGun > 30 && kalanGun <= 365) ? OduncTipi.Aylık.ToString() :
-                                   OduncTipi.Yıllık.ToString();
+                string oduncTipi = cmbOduncAlmaTipi.Text;
 
                 var odunc = new OduncIslem
                 {
