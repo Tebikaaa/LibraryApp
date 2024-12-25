@@ -3,6 +3,7 @@ using System;
 using LibraryEFCore.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryEFCore.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20241224123025_uyeStatuAndUyeCreated")]
+    partial class uyeStatuAndUyeCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -92,7 +95,7 @@ namespace LibraryEFCore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("OduncDurumu")
+                    b.Property<bool>("OduncDurumu")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OduncTarihi")
@@ -108,33 +111,6 @@ namespace LibraryEFCore.Migrations
                     b.HasIndex("UyeID");
 
                     b.ToTable("OduncIslemleri");
-                });
-
-            modelBuilder.Entity("LibraryEFCore.Models.Uyari", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Tipi")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UyariMesaji")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("UyariTarihi")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UyeID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UyeID");
-
-                    b.ToTable("Uyarilar");
                 });
 
             modelBuilder.Entity("LibraryEFCore.Models.Uye", b =>
@@ -219,17 +195,6 @@ namespace LibraryEFCore.Migrations
                     b.Navigation("Uye");
                 });
 
-            modelBuilder.Entity("LibraryEFCore.Models.Uyari", b =>
-                {
-                    b.HasOne("LibraryEFCore.Models.Uye", "Uye")
-                        .WithMany("Uyarilar")
-                        .HasForeignKey("UyeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Uye");
-                });
-
             modelBuilder.Entity("SeriNo", b =>
                 {
                     b.HasOne("Kitap", "Kitap")
@@ -254,8 +219,6 @@ namespace LibraryEFCore.Migrations
             modelBuilder.Entity("LibraryEFCore.Models.Uye", b =>
                 {
                     b.Navigation("OduncIslemler");
-
-                    b.Navigation("Uyarilar");
                 });
 #pragma warning restore 612, 618
         }

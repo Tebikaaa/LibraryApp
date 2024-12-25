@@ -187,6 +187,7 @@
             btnUye.TabIndex = 16;
             btnUye.Text = "Üye İşlemleri";
             btnUye.UseVisualStyleBackColor = false;
+            btnUye.Click += btnUye_Click;
             // 
             // button2
             // 
@@ -201,6 +202,7 @@
             button2.TabIndex = 17;
             button2.Text = "Ödünç Alma İşlemleri";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += btnOdunc_Click;
             // 
             // pnlContainer
             // 

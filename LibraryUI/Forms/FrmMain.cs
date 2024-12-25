@@ -63,5 +63,21 @@ namespace LibraryUI.Forms
             FrmMainPage mainPage = new FrmMainPage();
             FormYukle(mainPage);
         }
+
+        private void btnUye_Click(object sender, EventArgs e)
+        {
+            FrmMember frmMember = new FrmMember();
+            FormYukle(frmMember);
+        }
+        private void btnOdunc_Click(object sender, EventArgs e)
+        {
+            FrmBookContract bookContract = new FrmBookContract();
+            FormYukle(bookContract);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

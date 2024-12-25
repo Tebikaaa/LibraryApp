@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace LibraryEFCore.Basiss
 {
-    public enum OduncAlmaTipi
+    public enum Tarih
     {
-        Gunluk = 0,
-        Haftalik = 1,
-        Aylik = 2
+        Hepsi = 0,
+        Günlük = 1,
+        Haftalık = 2,
+        Aylık = 3,
+        Yıllık = 4
     }
 }

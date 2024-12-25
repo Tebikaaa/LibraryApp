@@ -9,26 +9,22 @@ using LibraryEFCore.Basiss;
 
 namespace LibraryEFCore.Models
 {
-    public class OduncIslem
+    public class Uyari
     {
         [Key]
         public int ID { get; set; }
 
+
         public int UyeID { get; set; }
         public required Uye Uye { get; set; }
 
-        public int KitapID { get; set; }
-        public required Kitap Kitap { get; set; }
+        public UyariTipi Tipi { get; set; }
 
-        public DateTime OduncTarihi { get; set; }
+        [Required]
+        [StringLength(200)]
+        public string UyariMesaji { get; set; } // Uyarı mesajı
 
-        public int KalanGun { get; set; }
-
-        public OduncDurumu OduncDurumu { get; set; }
-
-        public string OduncAlmaTipi { get; set; }
-
-        public DateTime? IadeTarihi { get; set; } // Nullable
+        public DateTime UyariTarihi { get; set; } // Uyarı tarihi
     }
 
 }

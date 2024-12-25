@@ -66,6 +66,14 @@ namespace LibraryUI.Forms.SubForms.Book
                     return;
                 }
 
+                // Aynı isimde kitap kontrolü
+                var mevcutKitap = _context.Kitaplar.FirstOrDefault(k => k.ISBN == txtISBN.Text.Trim());
+                if (mevcutKitap != null)
+                {
+                    MessageBox.Show("Bu kitap zaten mevcut. Lütfen farklı bir kitap girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 // Girilen kategori adını kontrol et
                 var kategori = _context.Kategoriler.FirstOrDefault(k => k.KategoriAdi == cmbKategori.Text.Trim());
                 if (kategori == null)
@@ -85,11 +93,25 @@ namespace LibraryUI.Forms.SubForms.Book
                     YayınYılı = int.TryParse(txtYayinYili.Text, out int yil) ? yil : (int?)null,
                     KategoriID = kategori.ID, // Seçilen veya yeni eklenen kategori ID
                     StokAdedi = (int)nudStokAdedi.Value, // NumericUpDown değerini al
-                    Durum = (KitapDurumu)cmbDurum.SelectedItem
+                    Durum = (KitapDurumu)cmbDurum.SelectedItem,
+                    SeriNolar = new List<SeriNo>() // Seri numaraları ekle
                 };
 
+                // Önce kitabı ekle ve ID'sini al
                 _context.Kitaplar.Add(yeniKitap);
-                _context.SaveChanges();
+                _context.SaveChanges(); // ID burada atanmış olur
+
+                // Seri numaraları ekle
+                for (int i = 0; i < yeniKitap.StokAdedi; i++)
+                {
+                    _context.SeriNolar.Add(new SeriNo
+                    {
+                        KitapID = yeniKitap.ID, // Artık ID atanmış durumda
+                        SeriNoKodu = $"SN-{yeniKitap.ID:D3}-{i + 1:D3}" // Doğru format
+                    });
+                }
+
+                _context.SaveChanges(); // Seri numaralarını kaydet
 
                 MessageBox.Show("Kitap başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close(); // Formu kapat
@@ -98,6 +120,11 @@ namespace LibraryUI.Forms.SubForms.Book
             {
                 MessageBox.Show($"Hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbDurum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

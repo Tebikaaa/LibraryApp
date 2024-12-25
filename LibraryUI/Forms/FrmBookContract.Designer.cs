@@ -29,282 +29,319 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBookContract));
-            gBoxValues = new GroupBox();
-            label8 = new Label();
-            comboBox1 = new ComboBox();
-            dateTimePicker2 = new DateTimePicker();
-            label7 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label6 = new Label();
-            label5 = new Label();
-            cbDurum = new ComboBox();
-            label4 = new Label();
-            cbKitap = new ComboBox();
-            cbUye = new ComboBox();
-            label3 = new Label();
-            txtId = new TextBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnYenile = new Button();
+            btnNew = new Button();
             label1 = new Label();
-            gBoxButtons = new GroupBox();
-            btnIade = new Button();
-            btnSil = new Button();
-            btnGuncelle = new Button();
-            btnEkle = new Button();
-            dataGridView1 = new DataGridView();
-            gBoxValues.SuspendLayout();
-            gBoxButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2 = new Panel();
+            txtSearch = new TextBox();
+            panel3 = new Panel();
+            lblSonuc = new Label();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            label2 = new Label();
+            cmbDurum = new ComboBox();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            label3 = new Label();
+            cmbTarih = new ComboBox();
+            panel5 = new Panel();
+            rdbZA = new RadioButton();
+            rdbAZ = new RadioButton();
+            label5 = new Label();
+            btnClearFilter = new Button();
+            panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
-            // gBoxValues
+            // flowLayoutPanel2
             // 
-            gBoxValues.AutoSize = true;
-            gBoxValues.Controls.Add(label8);
-            gBoxValues.Controls.Add(comboBox1);
-            gBoxValues.Controls.Add(dateTimePicker2);
-            gBoxValues.Controls.Add(label7);
-            gBoxValues.Controls.Add(dateTimePicker1);
-            gBoxValues.Controls.Add(label6);
-            gBoxValues.Controls.Add(label5);
-            gBoxValues.Controls.Add(cbDurum);
-            gBoxValues.Controls.Add(label4);
-            gBoxValues.Controls.Add(cbKitap);
-            gBoxValues.Controls.Add(cbUye);
-            gBoxValues.Controls.Add(label3);
-            gBoxValues.Controls.Add(txtId);
-            gBoxValues.Controls.Add(label1);
-            gBoxValues.Controls.Add(gBoxButtons);
-            gBoxValues.Dock = DockStyle.Fill;
-            gBoxValues.Location = new Point(0, 0);
-            gBoxValues.Name = "gBoxValues";
-            gBoxValues.Size = new Size(274, 601);
-            gBoxValues.TabIndex = 4;
-            gBoxValues.TabStop = false;
-            gBoxValues.Text = "Değer Kutusu";
+            flowLayoutPanel2.AutoScroll = true;
+            flowLayoutPanel2.BackColor = Color.FromArgb(255, 192, 192);
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(0, 67);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(1582, 440);
+            flowLayoutPanel2.TabIndex = 5;
             // 
-            // label8
+            // panel1
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(14, 199);
-            label8.Name = "label8";
-            label8.Size = new Size(100, 15);
-            label8.TabIndex = 37;
-            label8.Text = "Ödünç AlmaTipi :";
+            panel1.Controls.Add(flowLayoutPanel1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1582, 67);
+            panel1.TabIndex = 4;
             // 
-            // comboBox1
+            // flowLayoutPanel1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(116, 196);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(152, 23);
-            comboBox1.TabIndex = 36;
+            flowLayoutPanel1.Controls.Add(btnYenile);
+            flowLayoutPanel1.Controls.Add(btnNew);
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(panel2);
+            flowLayoutPanel1.Controls.Add(panel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Controls.Add(btnClearFilter);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.RightToLeft = RightToLeft.No;
+            flowLayoutPanel1.Size = new Size(1582, 67);
+            flowLayoutPanel1.TabIndex = 0;
             // 
-            // dateTimePicker2
+            // btnYenile
             // 
-            dateTimePicker2.Location = new Point(143, 167);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(125, 23);
-            dateTimePicker2.TabIndex = 35;
+            btnYenile.BackgroundImage = Properties.Resources.guncelle1;
+            btnYenile.BackgroundImageLayout = ImageLayout.Zoom;
+            btnYenile.FlatAppearance.BorderSize = 0;
+            btnYenile.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnYenile.FlatStyle = FlatStyle.Popup;
+            btnYenile.Location = new Point(1537, 3);
+            btnYenile.Name = "btnYenile";
+            btnYenile.Size = new Size(42, 58);
+            btnYenile.TabIndex = 3;
+            btnYenile.UseVisualStyleBackColor = true;
+            btnYenile.Click += btnYenile_Click;
             // 
-            // label7
+            // btnNew
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(14, 173);
-            label7.Name = "label7";
-            label7.Size = new Size(122, 15);
-            label7.TabIndex = 34;
-            label7.Text = "Ödünç Alınma Tarihi :";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(143, 138);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(125, 23);
-            dateTimePicker1.TabIndex = 33;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(14, 144);
-            label6.Name = "label6";
-            label6.Size = new Size(123, 15);
-            label6.TabIndex = 32;
-            label6.Text = "Ödünç Verilme Tarihi :";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(14, 112);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 15);
-            label5.TabIndex = 31;
-            label5.Text = "Ödünç Durumu :";
-            // 
-            // cbDurum
-            // 
-            cbDurum.FormattingEnabled = true;
-            cbDurum.Location = new Point(116, 109);
-            cbDurum.Name = "cbDurum";
-            cbDurum.Size = new Size(152, 23);
-            cbDurum.TabIndex = 30;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(14, 83);
-            label4.Name = "label4";
-            label4.Size = new Size(40, 15);
-            label4.TabIndex = 29;
-            label4.Text = "Kitap :";
-            // 
-            // cbKitap
-            // 
-            cbKitap.FormattingEnabled = true;
-            cbKitap.Location = new Point(60, 80);
-            cbKitap.Name = "cbKitap";
-            cbKitap.Size = new Size(208, 23);
-            cbKitap.TabIndex = 28;
-            // 
-            // cbUye
-            // 
-            cbUye.FormattingEnabled = true;
-            cbUye.Location = new Point(51, 51);
-            cbUye.Name = "cbUye";
-            cbUye.Size = new Size(217, 23);
-            cbUye.TabIndex = 27;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(14, 54);
-            label3.Name = "label3";
-            label3.Size = new Size(33, 15);
-            label3.TabIndex = 26;
-            label3.Text = "Üye :";
-            // 
-            // txtId
-            // 
-            txtId.Location = new Point(74, 22);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(194, 23);
-            txtId.TabIndex = 23;
+            btnNew.BackgroundImage = Properties.Resources.ekle;
+            btnNew.BackgroundImageLayout = ImageLayout.Zoom;
+            btnNew.FlatAppearance.BorderSize = 0;
+            btnNew.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnNew.FlatStyle = FlatStyle.Popup;
+            btnNew.Location = new Point(1488, 3);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(43, 58);
+            btnNew.TabIndex = 4;
+            btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 25);
+            label1.FlatStyle = FlatStyle.Popup;
+            label1.Font = new Font("Segoe UI", 24F);
+            label1.Location = new Point(1157, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 15);
-            label1.TabIndex = 22;
-            label1.Text = "Numarası :";
+            label1.Size = new Size(325, 45);
+            label1.TabIndex = 5;
+            label1.Text = "Ödünç Alma İşlemleri";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // gBoxButtons
+            // panel2
             // 
-            gBoxButtons.Controls.Add(btnIade);
-            gBoxButtons.Controls.Add(btnSil);
-            gBoxButtons.Controls.Add(btnGuncelle);
-            gBoxButtons.Controls.Add(btnEkle);
-            gBoxButtons.Dock = DockStyle.Bottom;
-            gBoxButtons.Location = new Point(3, 344);
-            gBoxButtons.Name = "gBoxButtons";
-            gBoxButtons.Size = new Size(268, 254);
-            gBoxButtons.TabIndex = 21;
-            gBoxButtons.TabStop = false;
-            gBoxButtons.Text = "İşlemler";
+            panel2.Controls.Add(txtSearch);
+            panel2.Location = new Point(844, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(307, 61);
+            panel2.TabIndex = 7;
             // 
-            // btnIade
+            // txtSearch
             // 
-            btnIade.Dock = DockStyle.Top;
-            btnIade.Location = new Point(3, 151);
-            btnIade.Name = "btnIade";
-            btnIade.Padding = new Padding(5);
-            btnIade.Size = new Size(262, 44);
-            btnIade.TabIndex = 3;
-            btnIade.Text = "İade";
-            btnIade.UseVisualStyleBackColor = true;
+            txtSearch.Font = new Font("Segoe UI", 18F);
+            txtSearch.Location = new Point(0, 9);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Ödünç İşlemi İçin Arayın";
+            txtSearch.RightToLeft = RightToLeft.No;
+            txtSearch.Size = new Size(304, 39);
+            txtSearch.TabIndex = 7;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
-            // btnSil
+            // panel3
             // 
-            btnSil.Dock = DockStyle.Top;
-            btnSil.Location = new Point(3, 107);
-            btnSil.Name = "btnSil";
-            btnSil.Padding = new Padding(5);
-            btnSil.Size = new Size(262, 44);
-            btnSil.TabIndex = 2;
-            btnSil.Text = "Sil";
-            btnSil.UseVisualStyleBackColor = true;
+            panel3.Controls.Add(lblSonuc);
+            panel3.Location = new Point(702, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(136, 61);
+            panel3.TabIndex = 8;
             // 
-            // btnGuncelle
+            // lblSonuc
             // 
-            btnGuncelle.Dock = DockStyle.Top;
-            btnGuncelle.Location = new Point(3, 63);
-            btnGuncelle.Name = "btnGuncelle";
-            btnGuncelle.Padding = new Padding(5);
-            btnGuncelle.Size = new Size(262, 44);
-            btnGuncelle.TabIndex = 1;
-            btnGuncelle.Text = "Güncelle";
-            btnGuncelle.UseVisualStyleBackColor = true;
+            lblSonuc.AutoSize = true;
+            lblSonuc.Font = new Font("Segoe UI", 12F);
+            lblSonuc.Location = new Point(3, 16);
+            lblSonuc.Name = "lblSonuc";
+            lblSonuc.RightToLeft = RightToLeft.No;
+            lblSonuc.Size = new Size(90, 21);
+            lblSonuc.TabIndex = 0;
+            lblSonuc.Text = "label Sonuc";
             // 
-            // btnEkle
+            // flowLayoutPanel3
             // 
-            btnEkle.Dock = DockStyle.Top;
-            btnEkle.Location = new Point(3, 19);
-            btnEkle.Name = "btnEkle";
-            btnEkle.Padding = new Padding(5);
-            btnEkle.Size = new Size(262, 44);
-            btnEkle.TabIndex = 0;
-            btnEkle.Text = "Ekle";
-            btnEkle.UseVisualStyleBackColor = true;
+            flowLayoutPanel3.Controls.Add(label2);
+            flowLayoutPanel3.Controls.Add(cmbDurum);
+            flowLayoutPanel3.Location = new Point(546, 3);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.RightToLeft = RightToLeft.No;
+            flowLayoutPanel3.Size = new Size(150, 61);
+            flowLayoutPanel3.TabIndex = 10;
             // 
-            // dataGridView1
+            // label2
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Right;
-            dataGridView1.Location = new Point(274, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(573, 601);
-            dataGridView1.TabIndex = 5;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14F);
+            label2.Location = new Point(3, 0);
+            label2.Name = "label2";
+            label2.RightToLeft = RightToLeft.No;
+            label2.Size = new Size(126, 25);
+            label2.TabIndex = 0;
+            label2.Text = "Duruma Göre";
+            // 
+            // cmbDurum
+            // 
+            cmbDurum.Font = new Font("Segoe UI", 10F);
+            cmbDurum.FormattingEnabled = true;
+            cmbDurum.Location = new Point(3, 28);
+            cmbDurum.Name = "cmbDurum";
+            cmbDurum.Size = new Size(132, 25);
+            cmbDurum.TabIndex = 1;
+            cmbDurum.SelectedIndexChanged += cmbDurum_SelectedIndexChanged;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(label3);
+            flowLayoutPanel4.Controls.Add(cmbTarih);
+            flowLayoutPanel4.Location = new Point(357, 3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.RightToLeft = RightToLeft.No;
+            flowLayoutPanel4.Size = new Size(183, 61);
+            flowLayoutPanel4.TabIndex = 14;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14F);
+            label3.Location = new Point(3, 0);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.No;
+            label3.Size = new Size(171, 25);
+            label3.TabIndex = 0;
+            label3.Text = "Ödünç Tipine Göre";
+            // 
+            // cmbTarih
+            // 
+            cmbTarih.Font = new Font("Segoe UI", 10F);
+            cmbTarih.FormattingEnabled = true;
+            cmbTarih.Location = new Point(3, 28);
+            cmbTarih.Name = "cmbTarih";
+            cmbTarih.Size = new Size(171, 25);
+            cmbTarih.TabIndex = 1;
+            cmbTarih.SelectedIndexChanged += cmbOduncTipi_SelectedIndexChanged;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(rdbZA);
+            panel5.Controls.Add(rdbAZ);
+            panel5.Controls.Add(label5);
+            panel5.Location = new Point(231, 3);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(120, 61);
+            panel5.TabIndex = 13;
+            // 
+            // rdbZA
+            // 
+            rdbZA.AutoSize = true;
+            rdbZA.Location = new Point(66, 27);
+            rdbZA.Name = "rdbZA";
+            rdbZA.RightToLeft = RightToLeft.No;
+            rdbZA.Size = new Size(45, 19);
+            rdbZA.TabIndex = 2;
+            rdbZA.Text = "Z-A";
+            rdbZA.UseVisualStyleBackColor = true;
+            rdbZA.CheckedChanged += rdbZA_CheckedChanged;
+            // 
+            // rdbAZ
+            // 
+            rdbAZ.AutoSize = true;
+            rdbAZ.Checked = true;
+            rdbAZ.Location = new Point(5, 27);
+            rdbAZ.Name = "rdbAZ";
+            rdbAZ.RightToLeft = RightToLeft.No;
+            rdbAZ.Size = new Size(45, 19);
+            rdbAZ.TabIndex = 1;
+            rdbAZ.TabStop = true;
+            rdbAZ.Text = "A-Z";
+            rdbAZ.UseVisualStyleBackColor = true;
+            rdbAZ.CheckedChanged += rdbAZ_CheckedChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(3, 6);
+            label5.Name = "label5";
+            label5.Size = new Size(66, 15);
+            label5.TabIndex = 0;
+            label5.Text = "Adına Göre";
+            // 
+            // btnClearFilter
+            // 
+            btnClearFilter.Location = new Point(138, 3);
+            btnClearFilter.Name = "btnClearFilter";
+            btnClearFilter.Size = new Size(87, 61);
+            btnClearFilter.TabIndex = 16;
+            btnClearFilter.Text = "Filtreleri Temizle";
+            btnClearFilter.UseVisualStyleBackColor = true;
+            btnClearFilter.Click += btnTemizle_Click;
             // 
             // FrmBookContract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 601);
-            Controls.Add(gBoxValues);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(1582, 507);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmBookContract";
             Text = "Ödünç Alma Formu";
-            gBoxValues.ResumeLayout(false);
-            gBoxValues.PerformLayout();
-            gBoxButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FrmBookContract_Load_1;
+            panel1.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private GroupBox gBoxValues;
-        private TextBox txtId;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Panel panel1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnYenile;
+        private Button btnNew;
         private Label label1;
-        private GroupBox gBoxButtons;
-        private Button btnSil;
-        private Button btnGuncelle;
-        private Button btnEkle;
-        private DataGridView dataGridView1;
-        private Button btnIade;
-        private Label label3;
-        private Label label4;
-        private ComboBox cbKitap;
-        private ComboBox cbUye;
+        private Panel panel2;
+        private TextBox txtSearch;
+        private Panel panel3;
+        private Label lblSonuc;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private Label label2;
+        private ComboBox cmbDurum;
+        private Panel panel5;
+        private RadioButton rdbZA;
+        private RadioButton rdbAZ;
         private Label label5;
-        private ComboBox cbDurum;
-        private Label label8;
-        private ComboBox comboBox1;
-        private DateTimePicker dateTimePicker2;
-        private Label label7;
-        private DateTimePicker dateTimePicker1;
-        private Label label6;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Label label3;
+        private ComboBox cmbTarih;
+        private Button btnClearFilter;
     }
 }

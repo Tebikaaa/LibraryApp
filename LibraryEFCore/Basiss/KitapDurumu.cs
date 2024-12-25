@@ -8,10 +8,10 @@ namespace LibraryUI.Basiss
 {
     public enum KitapDurumu
     {
-        OduncAlindi = 2,
-        Yok = 1,
         Mevcut = 0,
+        Yok = 1,
+        OduncAlindi = 2,
         Kayıp = 3,
-        Hasarlı = 4,
+        Hasarlı = 4
     }
 }

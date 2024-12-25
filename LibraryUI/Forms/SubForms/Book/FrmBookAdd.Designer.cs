@@ -38,6 +38,7 @@
             nudStokAdedi = new NumericUpDown();
             label6 = new Label();
             panel6 = new Panel();
+            cmbKategori = new ComboBox();
             txtISBN = new TextBox();
             label8 = new Label();
             label4 = new Label();
@@ -51,7 +52,6 @@
             panel2 = new Panel();
             panel4 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            cmbKategori = new ComboBox();
             panel9.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudStokAdedi).BeginInit();
@@ -84,6 +84,7 @@
             cmbDurum.Name = "cmbDurum";
             cmbDurum.Size = new Size(314, 31);
             cmbDurum.TabIndex = 1;
+            cmbDurum.SelectedIndexChanged += cmbDurum_SelectedIndexChanged;
             // 
             // panel9
             // 
@@ -150,6 +151,15 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(445, 39);
             panel6.TabIndex = 2;
+            // 
+            // cmbKategori
+            // 
+            cmbKategori.Font = new Font("Segoe UI", 13F);
+            cmbKategori.FormattingEnabled = true;
+            cmbKategori.Location = new Point(119, 6);
+            cmbKategori.Name = "cmbKategori";
+            cmbKategori.Size = new Size(314, 31);
+            cmbKategori.TabIndex = 2;
             // 
             // txtISBN
             // 
@@ -274,15 +284,6 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(453, 389);
             flowLayoutPanel1.TabIndex = 1;
-            // 
-            // cmbKategori
-            // 
-            cmbKategori.Font = new Font("Segoe UI", 13F);
-            cmbKategori.FormattingEnabled = true;
-            cmbKategori.Location = new Point(119, 6);
-            cmbKategori.Name = "cmbKategori";
-            cmbKategori.Size = new Size(314, 31);
-            cmbKategori.TabIndex = 2;
             // 
             // FrmBookAdd
             // 

@@ -1,3 +1,4 @@
+using System.Globalization;
 using LibraryEFCore.Context;
 using LibraryUI.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,8 @@ namespace LibraryUI
             {
                 context.Database.Migrate(); // Migration iþlemini uygular.
             }
-
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("tr-TR");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("tr-TR");
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

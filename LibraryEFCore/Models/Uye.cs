@@ -22,6 +22,13 @@ namespace LibraryEFCore.Models
         [StringLength(100)]
         public required string Email { get; set; }
 
+        [Required]
+        public bool UyeStatus { get; set; }
+
+        public DateTime UyeCreated { get; set; }
+
         public ICollection<OduncIslem>? OduncIslemler { get; set; } // İlişki
+
+        public ICollection<Uyari>? Uyarilar { get; set; } // Yeni ilişki: Uyarılar
     }
 }

@@ -15,6 +15,8 @@ namespace LibraryEFCore.Context
         public DbSet<Uye> Uyeler { get; set; }
         public DbSet<OduncIslem> OduncIslemleri { get; set; }
 
+        public DbSet<Uyari> Uyarilar {  get; set; }
+
         public DbSet<SeriNo> SeriNolar { get; set; }
 
         // Veritabanı bağlantısı
