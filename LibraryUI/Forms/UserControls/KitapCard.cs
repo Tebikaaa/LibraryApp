@@ -40,6 +40,9 @@ namespace LibraryUI.Forms.UserControls
             txtYayinYili.Text = $"{_kitap.YayınYılı}";
             txtKategori.Text = $"{_kitap.Kategori.KategoriAdi}";
             txtStokAdedi.Text = $"{_kitap.StokAdedi}";
+            toolTip1.SetToolTip(btnUpdate, "Kitabı Düzenle");
+            toolTip1.SetToolTip(btnSil, "Kitabı Sil");
+            toolTip1.SetToolTip(btnDetay, "Kitap Bilgisi");
         }
 
         // Detaylar butonuna tıklanınca form aç

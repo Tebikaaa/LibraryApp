@@ -25,6 +25,10 @@ namespace LibraryUI.Forms.UserControls
 
             txtId.Text = _kategori.ID.ToString();
             txtKategoriAdi.Text = _kategori.KategoriAdi;
+
+            toolTip1.SetToolTip(btnUpdate, "Kategoriyi Düzenle");
+            toolTip1.SetToolTip(btnSil, "Kategoriyi Sil");
+            toolTip1.SetToolTip(btnDetay, "Kategori Bilgisi");
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -90,8 +94,13 @@ namespace LibraryUI.Forms.UserControls
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            FrmCategoryUpdate categoryUpdate = new FrmCategoryUpdate(_kategori,_listeYenile);
+            FrmCategoryUpdate categoryUpdate = new FrmCategoryUpdate(_kategori, _listeYenile);
             categoryUpdate.ShowDialog();
+        }
+
+        private void KategoriCard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

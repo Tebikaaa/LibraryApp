@@ -123,7 +123,7 @@ namespace LibraryUI.Forms
                     {
                         var kitapCard = new KitapCard(kitap, _context, Filtrele)
                         {
-                            Width = (int)(flowLayoutPanel2.Width * 0.98),
+                            Width = (int)(flowLayoutPanel2.Width * 0.997),
                             Height = 80
                         };
                         flowLayoutPanel2.Controls.Add(kitapCard);
@@ -177,7 +177,11 @@ namespace LibraryUI.Forms
         {
             Filtrele();
         }
-
+        private void KategoriAc_Click(object sender, EventArgs e)
+        {
+            FrmCategory frmCategory = new FrmCategory();
+            frmCategory.ShowDialog();
+        }
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
             cmbKategori.SelectedIndex = -1;

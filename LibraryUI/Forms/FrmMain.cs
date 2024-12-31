@@ -35,21 +35,21 @@ namespace LibraryUI.Forms
 
         }
 
-        private void btnKitap_Click(object sender, EventArgs e)
+        private void KitapSayfaAc_Click(object sender, EventArgs e)
         {
             FrmBook book = new FrmBook();
             FormYukle(book);
         }
 
-        private void btnKategori_Click(object sender, EventArgs e)
-        {
-            FrmCategory category = new FrmCategory();
-            FormYukle(category);
-        }
-
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void AnasayfaAc_Click(object sender, EventArgs e)
+        {
+            FrmMainPage mainPage = new FrmMainPage();
+            FormYukle(mainPage);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -58,24 +58,23 @@ namespace LibraryUI.Forms
             FormYukle(mainPage);
         }
 
-        private void btnMain_Click(object sender, EventArgs e)
-        {
-            FrmMainPage mainPage = new FrmMainPage();
-            FormYukle(mainPage);
-        }
-
-        private void btnUye_Click(object sender, EventArgs e)
+        private void UyeFormAc_Click(object sender, EventArgs e)
         {
             FrmMember frmMember = new FrmMember();
             FormYukle(frmMember);
         }
-        private void btnOdunc_Click(object sender, EventArgs e)
+        private void TeslimFormAc_Click(object sender, EventArgs e)
         {
             FrmBookContract bookContract = new FrmBookContract();
             FormYukle(bookContract);
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

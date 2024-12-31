@@ -23,6 +23,10 @@ namespace LibraryUI.Forms.UserControls
             txtAdSoyad.Text = _uye.AdSoyad;
             txtEmail.Text = _uye.Email;
             txtDurum.Text = _uye.UyeStatus ? "Aktif" : "Pasif";
+
+            toolTip1.SetToolTip(btnUpdate, "Üyeyi Düzenle");
+            toolTip1.SetToolTip(btnSil, "Üyeyi Sil");
+            toolTip1.SetToolTip(btnDetay, "Üye Bilgisi");
         }
 
         private void btnSil_Click(object sender, EventArgs e)

@@ -62,8 +62,7 @@ namespace LibraryUI.Forms
                 // Arama metni filtresi
                 if (!string.IsNullOrWhiteSpace(filter))
                 {
-                    uyeler = uyeler.Where(u => u.AdSoyad.ToLower().Contains(lowerFilter) ||
-                                               u.Email.ToLower().Contains(lowerFilter));
+                    uyeler = uyeler.Where(u => u.AdSoyad.ToLower().Contains(lowerFilter));
                 }
 
                 // Durum filtresi
@@ -144,7 +143,7 @@ namespace LibraryUI.Forms
                     // Üye kartını oluştur
                     var memberCard = new MemberCard(uye, _context, () => UyeleriListele(filter))
                     {
-                        Width = (int)(flowLayoutPanel2.Width * 0.98), // Genişlik
+                        Width = (int)(flowLayoutPanel2.Width * 0.997), // Genişlik
                         Height = 80 // Sabit yükseklik
                     };
 

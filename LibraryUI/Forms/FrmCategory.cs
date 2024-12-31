@@ -22,7 +22,8 @@ namespace LibraryUI.Forms
         {
             InitializeComponent();
             _context = new LibraryContext();
-            this.Resize += FrmBook_Resize; // Veritabanı bağlantısı
+            this.Resize += FrmBook_Resize;
+            KategorileriListele();// Veritabanı bağlantısı
         }
 
         private void FrmBook_Resize(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace LibraryUI.Forms
                     // Kategori kartını oluştur
                     var kategoriCard = new KategoriCard(kategori, () => KategorileriListele(filter))
                     {
-                        Width = (int)(flowLayoutPanel2.Width * 0.98), // Genişlik
+                        Width = (int)(flowLayoutPanel2.Width * 0.993), // Genişlik
                         Height = 80 // Sabit yükseklik
                     };
 

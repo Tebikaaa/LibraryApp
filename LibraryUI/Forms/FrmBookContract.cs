@@ -110,7 +110,7 @@ namespace LibraryUI.Forms
                 {
                     var oduncCard = new OduncCard(odunc, _context, () => OduncIslemleriListele(filter))
                     {
-                        Width = (int)(flowLayoutPanel2.Width * 0.98),
+                        Width = (int)(flowLayoutPanel2.Width * 0.997),
                         Height = 80
                     };
                     flowLayoutPanel2.Controls.Add(oduncCard);

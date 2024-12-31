@@ -31,6 +31,10 @@ namespace LibraryUI.Forms.UserControls
             txtUyeAdi.Text = _oduncIslem.Uye.AdSoyad;
             txtKalanGun.Text = _oduncIslem.KalanGun.ToString();
             txtDurum.Text = _oduncIslem.OduncDurumu.ToString();
+
+            toolTip1.SetToolTip(btnUpdate, "İşlemi Düzenle");
+            toolTip1.SetToolTip(btnSil, "İşlemi Sil");
+            toolTip1.SetToolTip(btnDetay, "İşlem Bilgisi");
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
