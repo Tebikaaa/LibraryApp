@@ -131,7 +131,7 @@
             flowLayoutPanel2.Controls.Add(txtId);
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(114, 71);
+            flowLayoutPanel2.Size = new Size(129, 71);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // lblId
@@ -160,9 +160,9 @@
             flowLayoutPanel3.Anchor = AnchorStyles.Left;
             flowLayoutPanel3.Controls.Add(lblKitapAdi);
             flowLayoutPanel3.Controls.Add(txtKitapAdi);
-            flowLayoutPanel3.Location = new Point(123, 6);
+            flowLayoutPanel3.Location = new Point(138, 6);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(148, 65);
+            flowLayoutPanel3.Size = new Size(165, 65);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // lblKitapAdi
@@ -192,9 +192,9 @@
             flowLayoutPanel4.Anchor = AnchorStyles.Left;
             flowLayoutPanel4.Controls.Add(lblStok);
             flowLayoutPanel4.Controls.Add(txtStokAdedi);
-            flowLayoutPanel4.Location = new Point(277, 6);
+            flowLayoutPanel4.Location = new Point(309, 6);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(124, 65);
+            flowLayoutPanel4.Size = new Size(142, 65);
             flowLayoutPanel4.TabIndex = 2;
             // 
             // lblStok
@@ -223,9 +223,9 @@
             flowLayoutPanel5.Anchor = AnchorStyles.Left;
             flowLayoutPanel5.Controls.Add(lblYazar);
             flowLayoutPanel5.Controls.Add(txtYazar);
-            flowLayoutPanel5.Location = new Point(407, 6);
+            flowLayoutPanel5.Location = new Point(457, 6);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(131, 65);
+            flowLayoutPanel5.Size = new Size(151, 65);
             flowLayoutPanel5.TabIndex = 3;
             // 
             // lblYazar
@@ -254,9 +254,9 @@
             flowLayoutPanel6.Anchor = AnchorStyles.Left;
             flowLayoutPanel6.Controls.Add(lblKategori);
             flowLayoutPanel6.Controls.Add(txtKategori);
-            flowLayoutPanel6.Location = new Point(544, 6);
+            flowLayoutPanel6.Location = new Point(614, 6);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new Size(118, 65);
+            flowLayoutPanel6.Size = new Size(146, 65);
             flowLayoutPanel6.TabIndex = 4;
             // 
             // lblKategori

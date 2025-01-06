@@ -1,4 +1,5 @@
 ﻿using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Forms.SubForms;
 using LibraryUI.Forms.SubForms.Book;
@@ -11,6 +12,7 @@ namespace LibraryUI.Forms.UserControls
         public LibraryContext _context { get; private set; }
         private readonly Action RefreshAction;
         private readonly Action ReBuildCardAction;
+        private RaporRepository _raporRepository;
 
         // Yapıcı metod: Kitap verisini alır
         public KitapCard(Kitap kitap,LibraryContext context, Action refreshAction)
@@ -18,6 +20,7 @@ namespace LibraryUI.Forms.UserControls
             InitializeComponent();
             _kitap = kitap;
             _context = context;
+            _raporRepository = new RaporRepository(context);    
             RefreshAction = refreshAction; // Listeyi yenileme işlemi
             KitapBilgileriniYukle();
             ReBuildCardAction = KitapBilgileriniYukle;
@@ -67,6 +70,7 @@ namespace LibraryUI.Forms.UserControls
                     if (kitap != null)
                     {
                         context.Kitaplar.Remove(kitap); // Kitabı sil
+                        _raporRepository.RaporEkle("Kitap silindi: " + kitap.KitapAdi);
                         context.SaveChanges(); // Değişiklikleri kaydet
                         RefreshAction.Invoke(); // Listeyi yenile
                         MessageBox.Show("Kitap başarıyla silindi!");

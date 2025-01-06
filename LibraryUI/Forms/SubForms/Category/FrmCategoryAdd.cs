@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 
 namespace LibraryUI.Forms.SubForms.Category
@@ -16,12 +17,14 @@ namespace LibraryUI.Forms.SubForms.Category
     {
         private readonly LibraryContext _context;
         private readonly Action _listeYenile;
+        private RaporRepository _raporRepository;
         public FrmCategoryAdd(Action listeYenile)
         {
             InitializeComponent();
             _context = new LibraryContext(); // Veritabanı bağlantısını kur
             _listeYenile = listeYenile;
             _listeYenile = listeYenile;
+            _raporRepository = new RaporRepository(_context);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -51,6 +54,7 @@ namespace LibraryUI.Forms.SubForms.Category
 
                 // Veritabanına ekle
                 _context.Kategoriler.Add(yeniKategori);
+                _raporRepository.RaporEkle("Kategori "+ $"Yeni kategori eklendi: {yeniKategori.KategoriAdi}");
                 _context.SaveChanges(); // Kaydet
 
                 MessageBox.Show("Kategori başarıyla eklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);

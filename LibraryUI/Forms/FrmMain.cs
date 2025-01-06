@@ -15,7 +15,14 @@ namespace LibraryUI.Forms
         public FrmMain()
         {
             InitializeComponent();
+            this.Load += FrmMain_Load1;
         }
+
+        private void FrmMain_Load1(object? sender, EventArgs e)
+        {
+            AnasayfaAc_Click(sender, e);
+        }
+
         private void FormYukle(Form form)
         {
             pnlContainer.Controls.Clear(); // Önce paneli temizle
@@ -45,7 +52,11 @@ namespace LibraryUI.Forms
         {
 
         }
-
+        private void RaporFrmAc_Click(object sender, EventArgs e)
+        {
+            FrmRapor frmRapor = new FrmRapor();
+            FormYukle(frmRapor);
+        }
         private void AnasayfaAc_Click(object sender, EventArgs e)
         {
             FrmMainPage mainPage = new FrmMainPage();

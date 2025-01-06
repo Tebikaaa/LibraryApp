@@ -60,7 +60,7 @@
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(114, 71);
+            flowLayoutPanel2.Size = new Size(127, 71);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // lblId
@@ -89,9 +89,9 @@
             flowLayoutPanel3.Controls.Add(lblKitapAdi);
             flowLayoutPanel3.Controls.Add(txtAdSoyad);
             flowLayoutPanel3.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel3.Location = new Point(123, 3);
+            flowLayoutPanel3.Location = new Point(136, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(158, 71);
+            flowLayoutPanel3.Size = new Size(161, 71);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // lblKitapAdi
@@ -134,7 +134,7 @@
             flowLayoutPanel5.Controls.Add(label2);
             flowLayoutPanel5.Controls.Add(txtEmail);
             flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel5.Location = new Point(287, 3);
+            flowLayoutPanel5.Location = new Point(303, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new Size(204, 71);
             flowLayoutPanel5.TabIndex = 16;
@@ -166,9 +166,9 @@
             flowLayoutPanel4.Controls.Add(label1);
             flowLayoutPanel4.Controls.Add(txtDurum);
             flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel4.Location = new Point(497, 3);
+            flowLayoutPanel4.Location = new Point(513, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(102, 71);
+            flowLayoutPanel4.Size = new Size(133, 62);
             flowLayoutPanel4.TabIndex = 15;
             // 
             // label1

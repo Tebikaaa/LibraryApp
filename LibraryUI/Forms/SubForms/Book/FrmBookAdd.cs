@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Basiss;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace LibraryUI.Forms.SubForms.Book
     public partial class FrmBookAdd : Form
     {
         private readonly LibraryContext _context;
+        private RaporRepository _raporRepository;
         public FrmBookAdd(LibraryContext context)
         {
             InitializeComponent();
             _context = context;
+            _raporRepository = new RaporRepository(_context);
             BilgileriHazirla(); // Form açıldığında gerekli bilgileri hazırla
         }
 
@@ -93,12 +96,12 @@ namespace LibraryUI.Forms.SubForms.Book
                     YayınYılı = int.TryParse(txtYayinYili.Text, out int yil) ? yil : (int?)null,
                     KategoriID = kategori.ID, // Seçilen veya yeni eklenen kategori ID
                     StokAdedi = (int)nudStokAdedi.Value, // NumericUpDown değerini al
-                    Durum = (KitapDurumu)cmbDurum.SelectedItem,
                     SeriNolar = new List<SeriNo>() // Seri numaraları ekle
                 };
 
                 // Önce kitabı ekle ve ID'sini al
                 _context.Kitaplar.Add(yeniKitap);
+                _raporRepository.RaporEkle("Kitap Eklendi "+ $"{yeniKitap.KitapAdi} kitabı eklendi.");
                 _context.SaveChanges(); // ID burada atanmış olur
 
                 // Seri numaraları ekle
@@ -107,7 +110,8 @@ namespace LibraryUI.Forms.SubForms.Book
                     _context.SeriNolar.Add(new SeriNo
                     {
                         KitapID = yeniKitap.ID, // Artık ID atanmış durumda
-                        SeriNoKodu = $"SN-{yeniKitap.ID:D3}-{i + 1:D3}" // Doğru format
+                        SeriNoKodu = $"SN-{yeniKitap.ID:D3}-{i + 1:D3}", // Doğru format
+                        Durum = KitapDurumu.Mevcut
                     });
                 }
 

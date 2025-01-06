@@ -35,6 +35,7 @@
             txtNumara = new TextBox();
             label17 = new Label();
             panel9 = new Panel();
+            dtpAlindigiTarih = new DateTimePicker();
             label9 = new Label();
             panel10 = new Panel();
             dtpGeriAlinacakTarih = new DateTimePicker();
@@ -49,7 +50,6 @@
             txtKalanGun = new TextBox();
             label15 = new Label();
             btnGuncelle = new Button();
-            dtpAlindigiTarih = new DateTimePicker();
             flowLayoutPanel1.SuspendLayout();
             panel14.SuspendLayout();
             panel9.SuspendLayout();
@@ -86,7 +86,7 @@
             label16.Name = "label16";
             label16.Size = new Size(495, 38);
             label16.TabIndex = 24;
-            label16.Text = "Ödünç Alma Detayları";
+            label16.Text = "Teslimat Detayları";
             label16.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel14
@@ -125,6 +125,16 @@
             panel9.Name = "panel9";
             panel9.Size = new Size(495, 39);
             panel9.TabIndex = 30;
+            // 
+            // dtpAlindigiTarih
+            // 
+            dtpAlindigiTarih.DropDownAlign = LeftRightAlignment.Right;
+            dtpAlindigiTarih.Enabled = false;
+            dtpAlindigiTarih.Font = new Font("Segoe UI", 12F);
+            dtpAlindigiTarih.Location = new Point(183, 5);
+            dtpAlindigiTarih.Name = "dtpAlindigiTarih";
+            dtpAlindigiTarih.Size = new Size(309, 29);
+            dtpAlindigiTarih.TabIndex = 4;
             // 
             // label9
             // 
@@ -187,11 +197,11 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 15F);
-            label12.Location = new Point(22, 3);
+            label12.Location = new Point(60, 6);
             label12.Name = "label12";
-            label12.Size = new Size(166, 28);
+            label12.Size = new Size(128, 28);
             label12.TabIndex = 0;
-            label12.Text = "Ödünç Alma Tipi :";
+            label12.Text = "Teslimat Tipi :";
             // 
             // panel1
             // 
@@ -215,11 +225,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(33, 7);
+            label1.Location = new Point(21, 7);
             label1.Name = "label1";
-            label1.Size = new Size(155, 28);
+            label1.Size = new Size(167, 28);
             label1.TabIndex = 11;
-            label1.Text = "Ödünç Durumu :";
+            label1.Text = "Teslimat Durumu :";
             // 
             // panel13
             // 
@@ -258,19 +268,9 @@
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(495, 63);
             btnGuncelle.TabIndex = 37;
-            btnGuncelle.Text = "Ödünç Anlaşmasını Güncelle";
+            btnGuncelle.Text = "Teslim İşlemini Güncelle";
             btnGuncelle.UseVisualStyleBackColor = true;
             btnGuncelle.Click += btnGuncelle_Click;
-            // 
-            // dtpAlindigiTarih
-            // 
-            dtpAlindigiTarih.DropDownAlign = LeftRightAlignment.Right;
-            dtpAlindigiTarih.Enabled = false;
-            dtpAlindigiTarih.Font = new Font("Segoe UI", 12F);
-            dtpAlindigiTarih.Location = new Point(183, 5);
-            dtpAlindigiTarih.Name = "dtpAlindigiTarih";
-            dtpAlindigiTarih.Size = new Size(309, 29);
-            dtpAlindigiTarih.TabIndex = 4;
             // 
             // FrmBookContractUpdate
             // 
@@ -284,7 +284,7 @@
             MinimizeBox = false;
             Name = "FrmBookContractUpdate";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Ödünç Anlaşmasını Güncelleme Formu";
+            Text = "Teslimat İşlemini Güncelleme Formu";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel14.ResumeLayout(false);

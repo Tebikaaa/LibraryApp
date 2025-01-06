@@ -86,7 +86,7 @@ namespace LibraryUI.Forms
                 // Duruma göre filtre
                 if (durum.HasValue)
                 {
-                    kitaplar = kitaplar.Where(k => k.Durum == durum.Value);
+                    kitaplar.Where(k => _context.SeriNolar.Any(s => s.KitapID == k.ID && s.Durum.ToString().ToLower() == durum.Value.ToString().ToLower()));
                 }
 
                 // Arama metnine göre filtreleme

@@ -62,7 +62,7 @@
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(0, 67);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(928, 440);
+            flowLayoutPanel2.Size = new Size(1003, 440);
             flowLayoutPanel2.TabIndex = 5;
             // 
             // panel1
@@ -71,7 +71,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(928, 67);
+            panel1.Size = new Size(1003, 67);
             panel1.TabIndex = 4;
             // 
             // flowLayoutPanel1
@@ -91,7 +91,7 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.RightToLeft = RightToLeft.No;
-            flowLayoutPanel1.Size = new Size(928, 67);
+            flowLayoutPanel1.Size = new Size(1003, 67);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // btnYenile
@@ -103,7 +103,7 @@
             btnYenile.FlatAppearance.BorderSize = 0;
             btnYenile.FlatAppearance.MouseDownBackColor = Color.Gray;
             btnYenile.FlatStyle = FlatStyle.Popup;
-            btnYenile.Location = new Point(892, 15);
+            btnYenile.Location = new Point(967, 15);
             btnYenile.Name = "btnYenile";
             btnYenile.Size = new Size(33, 36);
             btnYenile.TabIndex = 3;
@@ -119,7 +119,7 @@
             btnNew.FlatAppearance.BorderSize = 0;
             btnNew.FlatAppearance.MouseDownBackColor = Color.Gray;
             btnNew.FlatStyle = FlatStyle.Popup;
-            btnNew.Location = new Point(854, 16);
+            btnNew.Location = new Point(929, 16);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(32, 34);
             btnNew.TabIndex = 4;
@@ -133,7 +133,7 @@
             label1.FlatStyle = FlatStyle.Popup;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(646, 23);
+            label1.Location = new Point(721, 23);
             label1.Name = "label1";
             label1.Size = new Size(202, 20);
             label1.TabIndex = 5;
@@ -144,11 +144,11 @@
             // 
             txtSearch.Anchor = AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 12F);
-            txtSearch.Location = new Point(460, 19);
+            txtSearch.Location = new Point(521, 19);
             txtSearch.Name = "txtSearch";
-            txtSearch.PlaceholderText = "Ödünç İşlemi İçin Arayın";
+            txtSearch.PlaceholderText = "Teslimat İşlemi İçin Arayın";
             txtSearch.RightToLeft = RightToLeft.No;
-            txtSearch.Size = new Size(180, 29);
+            txtSearch.Size = new Size(194, 29);
             txtSearch.TabIndex = 7;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -158,7 +158,7 @@
             lblSonuc.AutoSize = true;
             lblSonuc.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             lblSonuc.ForeColor = SystemColors.ButtonHighlight;
-            lblSonuc.Location = new Point(375, 25);
+            lblSonuc.Location = new Point(436, 25);
             lblSonuc.Name = "lblSonuc";
             lblSonuc.RightToLeft = RightToLeft.No;
             lblSonuc.Size = new Size(79, 17);
@@ -171,7 +171,7 @@
             flowLayoutPanel3.Controls.Add(label2);
             flowLayoutPanel3.Controls.Add(cmbDurum);
             flowLayoutPanel3.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel3.Location = new Point(279, 11);
+            flowLayoutPanel3.Location = new Point(340, 11);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.RightToLeft = RightToLeft.No;
             flowLayoutPanel3.Size = new Size(90, 45);
@@ -204,10 +204,10 @@
             flowLayoutPanel4.Anchor = AnchorStyles.Right;
             flowLayoutPanel4.Controls.Add(label3);
             flowLayoutPanel4.Controls.Add(cmbTarih);
-            flowLayoutPanel4.Location = new Point(159, 11);
+            flowLayoutPanel4.Location = new Point(206, 11);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.RightToLeft = RightToLeft.No;
-            flowLayoutPanel4.Size = new Size(114, 45);
+            flowLayoutPanel4.Size = new Size(128, 45);
             flowLayoutPanel4.TabIndex = 14;
             // 
             // label3
@@ -218,9 +218,9 @@
             label3.Location = new Point(3, 0);
             label3.Name = "label3";
             label3.RightToLeft = RightToLeft.No;
-            label3.Size = new Size(107, 15);
+            label3.Size = new Size(118, 15);
             label3.TabIndex = 0;
-            label3.Text = "Ödünç Tipine Göre";
+            label3.Text = "Teslimat Tipine Göre";
             // 
             // cmbTarih
             // 
@@ -228,7 +228,7 @@
             cmbTarih.FormattingEnabled = true;
             cmbTarih.Location = new Point(3, 18);
             cmbTarih.Name = "cmbTarih";
-            cmbTarih.Size = new Size(107, 20);
+            cmbTarih.Size = new Size(118, 20);
             cmbTarih.TabIndex = 1;
             cmbTarih.SelectedIndexChanged += cmbOduncTipi_SelectedIndexChanged;
             // 
@@ -238,7 +238,7 @@
             panel5.Controls.Add(rdbZA);
             panel5.Controls.Add(rdbAZ);
             panel5.Controls.Add(label5);
-            panel5.Location = new Point(75, 3);
+            panel5.Location = new Point(122, 3);
             panel5.Name = "panel5";
             panel5.Size = new Size(78, 61);
             panel5.TabIndex = 13;
@@ -246,11 +246,12 @@
             // rdbZA
             // 
             rdbZA.AutoSize = true;
-            rdbZA.Font = new Font("Segoe UI", 8F);
+            rdbZA.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            rdbZA.ForeColor = SystemColors.ButtonHighlight;
             rdbZA.Location = new Point(16, 35);
             rdbZA.Name = "rdbZA";
             rdbZA.RightToLeft = RightToLeft.No;
-            rdbZA.Size = new Size(42, 17);
+            rdbZA.Size = new Size(45, 19);
             rdbZA.TabIndex = 2;
             rdbZA.Text = "Z-A";
             rdbZA.UseVisualStyleBackColor = true;
@@ -261,11 +262,12 @@
             rdbAZ.Anchor = AnchorStyles.Top;
             rdbAZ.AutoSize = true;
             rdbAZ.Checked = true;
-            rdbAZ.Font = new Font("Segoe UI", 8F);
+            rdbAZ.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            rdbAZ.ForeColor = SystemColors.ButtonHighlight;
             rdbAZ.Location = new Point(16, 18);
             rdbAZ.Name = "rdbAZ";
             rdbAZ.RightToLeft = RightToLeft.No;
-            rdbAZ.Size = new Size(42, 17);
+            rdbAZ.Size = new Size(45, 19);
             rdbAZ.TabIndex = 1;
             rdbAZ.TabStop = true;
             rdbAZ.Text = "A-Z";
@@ -287,7 +289,7 @@
             // btnClearFilter
             // 
             btnClearFilter.Anchor = AnchorStyles.Right;
-            btnClearFilter.Location = new Point(6, 12);
+            btnClearFilter.Location = new Point(53, 12);
             btnClearFilter.Name = "btnClearFilter";
             btnClearFilter.Size = new Size(63, 43);
             btnClearFilter.TabIndex = 16;
@@ -299,7 +301,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(928, 507);
+            ClientSize = new Size(1003, 507);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

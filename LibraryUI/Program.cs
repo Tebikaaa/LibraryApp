@@ -15,7 +15,8 @@ namespace LibraryUI
         {
             using (var context = new LibraryContext())
             {
-                context.Database.Migrate(); // Migration iþlemini uygular.
+
+                context.Database.EnsureCreated(); // Migration iþlemini uygular.
             }
             Thread.CurrentThread.CurrentCulture = new CultureInfo("tr-TR");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("tr-TR");

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LibraryEFCore.Basiss;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Basiss;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +16,12 @@ namespace LibraryUI.Forms.SubForms.Member
     {
         private readonly LibraryContext _context;
         private readonly Action _listeYenile;
-
+        private RaporRepository _raporRepository;
         public FrmMemberAdd(LibraryContext context, Action listeYenile)
         {
             InitializeComponent();
             _context = context;
+            _raporRepository = new RaporRepository(context);
             _listeYenile = listeYenile;
             BilgileriHazirla(); // Bilgileri hazırlama işlemi
         }
@@ -64,6 +66,7 @@ namespace LibraryUI.Forms.SubForms.Member
 
                 // Veritabanına ekle
                 _context.Uyeler.Add(yeniUye);
+                _raporRepository.RaporEkle($"{yeniUye.AdSoyad} adlı üye eklendi."); // Rapor ekle
                 _context.SaveChanges(); // Kaydet
 
                 MessageBox.Show("Üye başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

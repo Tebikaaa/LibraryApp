@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Basiss;
 using LibraryUI.Forms.SubForms.BookContract;
@@ -13,12 +14,13 @@ namespace LibraryUI.Forms.UserControls
         private readonly OduncIslem _oduncIslem;
         private readonly LibraryContext _context;
         private readonly Action _listeYenile;
-
+        private RaporRepository _raporRepository;
         public OduncCard(OduncIslem oduncIslem, LibraryContext context, Action listeYenile)
         {
             InitializeComponent();
             _oduncIslem = oduncIslem;
             _context = context;
+            _raporRepository = new RaporRepository(_context);
             _listeYenile = listeYenile;
 
             BilgileriYukle();
@@ -60,18 +62,32 @@ namespace LibraryUI.Forms.UserControls
 
                 if (result == DialogResult.Yes)
                 {
-                    var odunc = _context.OduncIslemleri.Include(o => o.Kitap).FirstOrDefault(o => o.ID == _oduncIslem.ID);
+                    // Ödünç işlemini veritabanından al
+                    var odunc = _context.OduncIslemleri
+                        .Include(o => o.Kitap)
+                        .FirstOrDefault(o => o.ID == _oduncIslem.ID);
+
                     if (odunc != null)
                     {
-                        // Kitap durumunu ve stok bilgisini güncelle
-                        var kitap = _context.Kitaplar.FirstOrDefault(k => k.ID == odunc.KitapID);
-                        if (kitap != null)
+                        // İlgili seri numarasını al
+                        var seriNo = _context.SeriNolar.FirstOrDefault(s => s.KitapID == odunc.KitapID && s.ID == odunc.Kitap.SeriNolar.First().ID);
+
+                        if (seriNo != null)
                         {
-                            kitap.Durum = KitapDurumu.Mevcut;
-                            kitap.StokAdedi++;
+                            // Seri numarasının durumunu güncelle
+                            seriNo.Durum = KitapDurumu.Mevcut;
+
+                            // Stok sayısını artır
+                            var kitap = _context.Kitaplar.FirstOrDefault(k => k.ID == seriNo.KitapID);
+                            if (kitap != null)
+                            {
+                                kitap.StokAdedi++;
+                            }
                         }
 
+                        // Ödünç işlemini kaldır
                         _context.OduncIslemleri.Remove(odunc);
+                        _raporRepository.RaporEkle("Ödünç işlemi silindi: " + odunc.Kitap.KitapAdi);
                         _context.SaveChanges();
 
                         MessageBox.Show("Ödünç işlemi başarıyla silindi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,5 +104,6 @@ namespace LibraryUI.Forms.UserControls
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

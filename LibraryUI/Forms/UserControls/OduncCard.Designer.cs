@@ -64,7 +64,7 @@
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(115, 62);
+            flowLayoutPanel2.Size = new Size(126, 62);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // lblId
@@ -93,9 +93,9 @@
             flowLayoutPanel3.Controls.Add(lblKitapAdi);
             flowLayoutPanel3.Controls.Add(txtKitapAdi);
             flowLayoutPanel3.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel3.Location = new Point(124, 3);
+            flowLayoutPanel3.Location = new Point(135, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(144, 62);
+            flowLayoutPanel3.Size = new Size(147, 62);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // lblKitapAdi
@@ -139,9 +139,9 @@
             flowLayoutPanel4.Controls.Add(label1);
             flowLayoutPanel4.Controls.Add(txtUyeAdi);
             flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel4.Location = new Point(274, 3);
+            flowLayoutPanel4.Location = new Point(288, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(129, 64);
+            flowLayoutPanel4.Size = new Size(132, 64);
             flowLayoutPanel4.TabIndex = 15;
             // 
             // label1
@@ -171,9 +171,9 @@
             flowLayoutPanel5.Controls.Add(label2);
             flowLayoutPanel5.Controls.Add(txtKalanGun);
             flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel5.Location = new Point(409, 3);
+            flowLayoutPanel5.Location = new Point(426, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(132, 67);
+            flowLayoutPanel5.Size = new Size(135, 68);
             flowLayoutPanel5.TabIndex = 16;
             // 
             // label2
@@ -204,9 +204,9 @@
             flowLayoutPanel6.Controls.Add(label3);
             flowLayoutPanel6.Controls.Add(txtDurum);
             flowLayoutPanel6.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel6.Location = new Point(547, 3);
+            flowLayoutPanel6.Location = new Point(567, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new Size(100, 64);
+            flowLayoutPanel6.Size = new Size(130, 68);
             flowLayoutPanel6.TabIndex = 17;
             // 
             // label3

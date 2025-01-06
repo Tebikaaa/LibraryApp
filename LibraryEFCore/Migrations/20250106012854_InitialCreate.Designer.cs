@@ -3,6 +3,7 @@ using System;
 using LibraryEFCore.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -11,47 +12,50 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryEFCore.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20241223184516_AddSeriNoTable2")]
-    partial class AddSeriNoTable2
+    [Migration("20250106012854_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Kitap", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
-                    b.Property<int>("Durum")
-                        .HasColumnType("INTEGER");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasMaxLength(13)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<int>("KategoriID")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("KitapAdi")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("StokAdedi")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int?>("YayınYılı")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Yazar")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("ID");
 
@@ -60,16 +64,38 @@ namespace LibraryEFCore.Migrations
                     b.ToTable("Kitaplar");
                 });
 
+            modelBuilder.Entity("LibraryEFCore.Models.AppRapor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Tarih")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppRapors");
+                });
+
             modelBuilder.Entity("LibraryEFCore.Models.Kategori", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("KategoriAdi")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ID");
 
@@ -80,29 +106,31 @@ namespace LibraryEFCore.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime?>("IadeTarihi")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("KalanGun")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("KitapID")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("OduncAlmaTipi")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("OduncDurumu")
-                        .HasColumnType("INTEGER");
+                    b.Property<int>("OduncDurumu")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("OduncTarihi")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UyeID")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -113,25 +141,62 @@ namespace LibraryEFCore.Migrations
                     b.ToTable("OduncIslemleri");
                 });
 
+            modelBuilder.Entity("LibraryEFCore.Models.Uyari", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Tipi")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UyariMesaji")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("UyariTarihi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UyeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UyeID");
+
+                    b.ToTable("Uyarilar");
+                });
+
             modelBuilder.Entity("LibraryEFCore.Models.Uye", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("AdSoyad")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Telefon")
                         .HasMaxLength(15)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<DateTime>("UyeCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("UyeStatus")
+                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 
@@ -142,15 +207,20 @@ namespace LibraryEFCore.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Durum")
+                        .HasColumnType("int");
 
                     b.Property<int>("KitapID")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("SeriNoKodu")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ID");
 
@@ -189,6 +259,17 @@ namespace LibraryEFCore.Migrations
                     b.Navigation("Uye");
                 });
 
+            modelBuilder.Entity("LibraryEFCore.Models.Uyari", b =>
+                {
+                    b.HasOne("LibraryEFCore.Models.Uye", "Uye")
+                        .WithMany("Uyarilar")
+                        .HasForeignKey("UyeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Uye");
+                });
+
             modelBuilder.Entity("SeriNo", b =>
                 {
                     b.HasOne("Kitap", "Kitap")
@@ -213,6 +294,8 @@ namespace LibraryEFCore.Migrations
             modelBuilder.Entity("LibraryEFCore.Models.Uye", b =>
                 {
                     b.Navigation("OduncIslemler");
+
+                    b.Navigation("Uyarilar");
                 });
 #pragma warning restore 612, 618
         }

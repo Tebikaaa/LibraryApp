@@ -46,5 +46,10 @@ namespace LibraryUI.Forms.SubForms.BookContract
             txtOduncAlmaTipi.Text = _oduncIslem.OduncAlmaTipi;
             txtKalanGun.Text = _oduncIslem.KalanGun.ToString();
         }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

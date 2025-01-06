@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Forms.SubForms.Member;
 
@@ -11,12 +12,13 @@ namespace LibraryUI.Forms.UserControls
         private readonly Uye _uye; // Seçilen üye
         private readonly Action _listeYenile;
         private readonly LibraryContext _context;
-
+        private RaporRepository _raporRepository;
         public MemberCard(Uye uye, LibraryContext context, Action listeYenile)
         {
             InitializeComponent();
             _uye = uye;
             _context = context;
+            _raporRepository = new RaporRepository(context);
             _listeYenile = listeYenile;
 
             txtNumara.Text = _uye.ID.ToString();
@@ -55,6 +57,7 @@ namespace LibraryUI.Forms.UserControls
                     if (uye != null)
                     {
                         _context.Uyeler.Remove(uye); // Silme işlemi
+                        _raporRepository.RaporEkle("Üye silindi: " + _uye.AdSoyad);
                         _context.SaveChanges(); // Veritabanına kaydet
 
                         MessageBox.Show("Üye başarıyla silindi!", "Başarılı",

@@ -46,6 +46,7 @@
             txtISBN = new TextBox();
             label4 = new Label();
             panel5 = new Panel();
+            cmbSeriNolar = new ComboBox();
             label5 = new Label();
             panel6 = new Panel();
             cmbKategori = new ComboBox();
@@ -57,7 +58,6 @@
             cmbDurum = new ComboBox();
             label9 = new Label();
             btnGuncelle = new Button();
-            cmbSeriNolar = new ComboBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -234,6 +234,16 @@
             panel5.Size = new Size(445, 39);
             panel5.TabIndex = 2;
             // 
+            // cmbSeriNolar
+            // 
+            cmbSeriNolar.Font = new Font("Segoe UI", 12F);
+            cmbSeriNolar.FormattingEnabled = true;
+            cmbSeriNolar.Location = new Point(141, 7);
+            cmbSeriNolar.Name = "cmbSeriNolar";
+            cmbSeriNolar.Size = new Size(292, 29);
+            cmbSeriNolar.TabIndex = 1;
+            cmbSeriNolar.SelectedIndexChanged += cmbSeriNolar_SelectedIndexChanged;
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -341,15 +351,6 @@
             btnGuncelle.Text = "Kitabı Güncelle";
             btnGuncelle.UseVisualStyleBackColor = true;
             btnGuncelle.Click += btnGuncelle_Click;
-            // 
-            // cmbSeriNolar
-            // 
-            cmbSeriNolar.Font = new Font("Segoe UI", 12F);
-            cmbSeriNolar.FormattingEnabled = true;
-            cmbSeriNolar.Location = new Point(141, 7);
-            cmbSeriNolar.Name = "cmbSeriNolar";
-            cmbSeriNolar.Size = new Size(292, 29);
-            cmbSeriNolar.TabIndex = 1;
             // 
             // FrmBookUpdate
             // 

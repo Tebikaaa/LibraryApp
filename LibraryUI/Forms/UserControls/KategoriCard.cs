@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Forms.SubForms.Category;
 
@@ -17,12 +18,13 @@ namespace LibraryUI.Forms.UserControls
     {
         private readonly Kategori _kategori; // Seçilen kategori
         private readonly Action _listeYenile;
+        private RaporRepository _raporRepository;
         public KategoriCard(Kategori kategori, Action listeYenile)
         {
             InitializeComponent();
             _kategori = kategori;
             _listeYenile = listeYenile;
-
+            _raporRepository = new RaporRepository(new LibraryContext());
             txtId.Text = _kategori.ID.ToString();
             txtKategoriAdi.Text = _kategori.KategoriAdi;
 
@@ -59,6 +61,7 @@ namespace LibraryUI.Forms.UserControls
                         if (kategori != null)
                         {
                             context.Kategoriler.Remove(kategori); // Silme işlemi
+                            _raporRepository.RaporEkle("Kategori silindi: " + kategori.KategoriAdi);
                             context.SaveChanges(); // Veritabanına kaydet
 
                             MessageBox.Show("Kategori başarıyla silindi!", "Başarılı",

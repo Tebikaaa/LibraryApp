@@ -27,7 +27,6 @@ public class Kitap
 
     public int StokAdedi { get; set; } // Toplam Stok
 
-    public KitapDurumu Durum { get; set; } = KitapDurumu.Mevcut;
 
     // Navigation Property for SeriNo
     public ICollection<SeriNo> SeriNolar { get; set; } = new List<SeriNo>();

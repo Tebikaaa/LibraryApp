@@ -45,13 +45,10 @@ namespace LibraryEFCore.DataAccess
                 kitaplar = kitaplar.Where(k => k.Kategori.KategoriAdi.ToLower().Contains(kategori.ToLower()));
             }
 
-            // 2. Duruma Göre Filtre
+            // 2. Duruma Göre Filtre (SeriNo tablosuna taşındı)
             if (!string.IsNullOrWhiteSpace(durum))
             {
-                if (Enum.TryParse<KitapDurumu>(durum, out var durumEnum))
-                {
-                    kitaplar = kitaplar.Where(k => k.Durum == durumEnum);
-                }
+                kitaplar = kitaplar.Where(k => _context.SeriNolar.Any(s => s.KitapID == k.ID && s.Durum.ToString().ToLower() == durum.ToLower()));
             }
 
             // 3. Stoka Göre Filtre

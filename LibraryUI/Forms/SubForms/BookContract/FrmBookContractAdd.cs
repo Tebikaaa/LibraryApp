@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LibraryEFCore.Basiss;
 using LibraryEFCore.Context;
+using LibraryEFCore.DataAccess;
 using LibraryEFCore.Models;
 using LibraryUI.Basiss;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +15,14 @@ namespace LibraryUI.Forms.SubForms.BookContract
     {
         private readonly LibraryContext _context;
         private readonly Action _onAdd;
+        private RaporRepository _raporRepository;
 
         public FrmBookContractAdd(LibraryContext context, Action onAdd)
         {
             InitializeComponent();
             _context = context;
             _onAdd = onAdd;
+            _raporRepository = new RaporRepository(_context);
             BilgileriHazirla();
         }
 
@@ -57,9 +60,7 @@ namespace LibraryUI.Forms.SubForms.BookContract
 
             if (uyeler.Any())
             {
-                cmbAdSoyad.DataSource = uyeler;
-                cmbAdSoyad.DisplayMember = "AdSoyad";
-                cmbAdSoyad.ValueMember = "ID";
+                cmbAdSoyad.Text = uyeler.First().AdSoyad;
 
                 var secilenUye = uyeler.FirstOrDefault(u => u.Email == txtEmail.Text.Trim());
                 if (secilenUye != null)
@@ -77,7 +78,7 @@ namespace LibraryUI.Forms.SubForms.BookContract
         private void TemizleUyeBilgileri()
         {
             txtUyeNumara.Clear();
-            cmbAdSoyad.DataSource = null;
+            cmbAdSoyad.Text = " ";
             cmbUyarilar.DataSource = null;
         }
 
@@ -89,17 +90,17 @@ namespace LibraryUI.Forms.SubForms.BookContract
                 return;
             }
 
-            var kitap = _context.SeriNolar
+            var seriNo = _context.SeriNolar
                 .Include(s => s.Kitap)
                 .ThenInclude(k => k.Kategori)
-                .FirstOrDefault(s => s.SeriNoKodu == txtSeriNo.Text.Trim())?.Kitap;
+                .FirstOrDefault(s => s.SeriNoKodu == txtSeriNo.Text.Trim());
 
-            if (kitap != null)
+            if (seriNo != null)
             {
-                txtKitapNumara.Text = kitap.ID.ToString();
-                txtKitapAdi.Text = kitap.KitapAdi;
-                txtYazar.Text = kitap.Yazar;
-                txtISBN.Text = kitap.ISBN;
+                txtKitapNumara.Text = seriNo.Kitap.ID.ToString();
+                txtKitapAdi.Text = seriNo.Kitap.KitapAdi;
+                txtYazar.Text = seriNo.Kitap.Yazar;
+                txtISBN.Text = seriNo.Kitap.ISBN;
             }
             else
             {
@@ -125,42 +126,35 @@ namespace LibraryUI.Forms.SubForms.BookContract
                     return;
                 }
 
-                var kitapID = int.Parse(txtKitapNumara.Text);
-                var kitap = _context.Kitaplar.FirstOrDefault(k => k.ID == kitapID);
-                if (kitap == null || kitap.StokAdedi <= 0)
+                var seriNo = _context.SeriNolar.FirstOrDefault(s => s.SeriNoKodu == txtSeriNo.Text.Trim());
+                if (seriNo == null || seriNo.Durum != KitapDurumu.Mevcut)
                 {
-                    MessageBox.Show("Kitap stokta yok!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var uyeID = int.Parse(txtUyeNumara.Text);
-                var uye = _context.Uyeler.FirstOrDefault(u => u.ID == uyeID);
-                if (uye == null)
-                {
-                    MessageBox.Show("Üye bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Kitap mevcut değil veya ödünç alınmış durumda!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 int kalanGun = (dtpGeriAlinacakTarih.Value - dtpAlindigiTarih.Value).Days;
                 string oduncTipi = cmbOduncAlmaTipi.Text;
 
+                var uye = _context.Uyeler.FirstOrDefault(u => u.ID == int.Parse(txtUyeNumara.Text));
+                var kitap = _context.Kitaplar.FirstOrDefault(k => k.ID == seriNo.KitapID);
+
                 var odunc = new OduncIslem
                 {
-                    UyeID = uyeID,
+                    UyeID = int.Parse(txtUyeNumara.Text),
                     Uye = uye,
-                    KitapID = kitapID,
+                    KitapID = seriNo.KitapID,
                     Kitap = kitap,
                     OduncTarihi = dtpAlindigiTarih.Value,
                     IadeTarihi = dtpGeriAlinacakTarih.Value,
                     OduncAlmaTipi = oduncTipi,
                     KalanGun = kalanGun,
-                    OduncDurumu = OduncDurumu.Aktif
+                    OduncDurumu = OduncDurumu.TeslimEdilmedi
                 };
-
-                kitap.Durum = KitapDurumu.OduncAlindi;
-                kitap.StokAdedi--;
+                seriNo.Durum = KitapDurumu.OduncAlindi;
 
                 _context.OduncIslemleri.Add(odunc);
+                _raporRepository.RaporEkle("Ödünç Kitap Eklendi " + $"{uye.AdSoyad}, {kitap.KitapAdi} kitabını ödünç aldı.");
                 _context.SaveChanges();
                 _onAdd?.Invoke();
                 MessageBox.Show("Ödünç işlemi başarıyla tamamlandı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -172,35 +166,6 @@ namespace LibraryUI.Forms.SubForms.BookContract
             }
         }
 
-        private void dtpAlindigiTarih_ValueChanged(object sender, EventArgs e)
-        {
-            KalanGunHesapla();
-        }
-
-        private void dtpGeriAlinacakTarih_ValueChanged(object sender, EventArgs e)
-        {
-            KalanGunHesapla();
-        }
-        private void KalanGunHesapla()
-        {
-            if (dtpGeriAlinacakTarih.Value.Date < dtpAlindigiTarih.Value.Date)
-            {
-                MessageBox.Show("Geri alınacak tarih, alınan tarihten önce olamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpGeriAlinacakTarih.Value = dtpAlindigiTarih.Value;
-            }
-            txtKalanGun.Text = (dtpGeriAlinacakTarih.Value - dtpAlindigiTarih.Value).Days.ToString();
-        }
-
-        private void cmbAdSoyad_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (cmbAdSoyad.SelectedItem is Uye secilenUye)
-            {
-                txtUyeNumara.Text = secilenUye.ID.ToString();
-                txtEmail.Text = secilenUye.Email;
-                cmbUyarilar.DataSource = secilenUye.Uyarilar?.Select(u => u.Tipi.ToString()).ToList();
-            }
-        }
-
         private void txtUyeEmail_TextChanged(object sender, EventArgs e)
         {
             UyeBilgileriniGetir();
@@ -209,6 +174,16 @@ namespace LibraryUI.Forms.SubForms.BookContract
         private void txtSeriNo_TextChanged(object sender, EventArgs e)
         {
             KitapBilgileriniGetir();
+        }
+
+        private void dtpGeriAlinacakTarih_ValueChanged(object sender, EventArgs e)
+        {
+            txtKalanGun.Text = (dtpGeriAlinacakTarih.Value - dtpAlindigiTarih.Value).Days.ToString();
+        }
+
+        private void dtpAlindigiTarih_ValueChanged(object sender, EventArgs e)
+        {
+            txtKalanGun.Text = (dtpGeriAlinacakTarih.Value - dtpAlindigiTarih.Value).Days.ToString();
         }
     }
 }

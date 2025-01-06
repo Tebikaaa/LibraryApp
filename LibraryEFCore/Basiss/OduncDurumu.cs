@@ -8,9 +8,8 @@ namespace LibraryEFCore.Basiss
 {
     public enum OduncDurumu
     {
-        Aktif = 0,
-        Tamamlandı = 1,
-        Gecikmis = 2,
+        TeslimEdilmedi = 0,
+        TeslimEdildi = 1,
     }
 
 }

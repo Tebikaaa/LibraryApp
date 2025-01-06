@@ -44,8 +44,6 @@
             label5 = new Label();
             pictureBox4 = new PictureBox();
             panel5 = new Panel();
-            label8 = new Label();
-            label7 = new Label();
             label6 = new Label();
             pictureBox5 = new PictureBox();
             panel6 = new Panel();
@@ -262,8 +260,6 @@
             // 
             panel5.Anchor = AnchorStyles.Top;
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(label8);
-            panel5.Controls.Add(label7);
             panel5.Controls.Add(label6);
             panel5.Controls.Add(pictureBox5);
             panel5.Cursor = Cursors.Hand;
@@ -273,37 +269,6 @@
             panel5.TabIndex = 3;
             panel5.Click += TeslimFormAc_Click;
             // 
-            // label8
-            // 
-            label8.AllowDrop = true;
-            label8.AutoSize = true;
-            label8.Cursor = Cursors.Hand;
-            label8.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label8.ForeColor = SystemColors.ButtonHighlight;
-            label8.Location = new Point(66, 30);
-            label8.Name = "label8";
-            label8.Size = new Size(124, 20);
-            label8.TabIndex = 7;
-            label8.Text = "ETME İŞLEMLERİ ";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
-            label8.Click += TeslimFormAc_Click;
-            // 
-            // label7
-            // 
-            label7.AllowDrop = true;
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Cursor = Cursors.Hand;
-            label7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label7.ForeColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(123, 10);
-            label7.Name = "label7";
-            label7.Size = new Size(76, 20);
-            label7.TabIndex = 6;
-            label7.Text = "ALMA VE ";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
-            label7.Click += TeslimFormAc_Click;
-            // 
             // label6
             // 
             label6.AllowDrop = true;
@@ -311,11 +276,11 @@
             label6.Cursor = Cursors.Hand;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ButtonHighlight;
-            label6.Location = new Point(66, 10);
+            label6.Location = new Point(57, 20);
             label6.Name = "label6";
-            label6.Size = new Size(58, 20);
+            label6.Size = new Size(148, 20);
             label6.TabIndex = 5;
-            label6.Text = "TESLİM";
+            label6.Text = "TESLİMAT İŞLEMLERİ";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             label6.Click += TeslimFormAc_Click;
             // 
@@ -344,6 +309,7 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(215, 60);
             panel6.TabIndex = 3;
+            panel6.Click += RaporFrmAc_Click;
             // 
             // label9
             // 
@@ -356,6 +322,7 @@
             label9.Size = new Size(130, 20);
             label9.TabIndex = 5;
             label9.Text = "RAPOR İŞLEMLERİ";
+            label9.Click += RaporFrmAc_Click;
             // 
             // pictureBox6
             // 
@@ -369,6 +336,7 @@
             pictureBox6.Size = new Size(51, 58);
             pictureBox6.TabIndex = 1;
             pictureBox6.TabStop = false;
+            pictureBox6.Click += RaporFrmAc_Click;
             // 
             // pnlContainer
             // 
@@ -436,8 +404,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label8;
-        private Label label7;
         private Label label9;
     }
 }
